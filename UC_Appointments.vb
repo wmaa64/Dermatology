@@ -11,6 +11,8 @@ Public Class UC_Appointments
 
         SetupGridButtons()
 
+        LoadTodaySchedule()
+
     End Sub
 
     Private Sub LoadAppointments()
@@ -92,6 +94,7 @@ Public Class UC_Appointments
     Private Sub UC_Appointments_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadAppointments()
         SetupGridButtons()
+        LoadTodaySchedule()
     End Sub
 
     Private Sub dgvAppointments_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvAppointments.CellContentClick
@@ -368,6 +371,90 @@ Public Class UC_Appointments
 
     Private Sub miCancel_Click(sender As Object, e As EventArgs) Handles miCancel.Click
         UpdateAppointmentStatus("Cancelled")
+    End Sub
+
+    Private Sub LoadTodaySchedule()
+
+        Try
+
+            flpSchedule.Controls.Clear()
+
+            Dim cmd As New SqlCommand("SELECT
+                                            P.FullName,
+                                            A.AppointmentTime,
+                                            A.Status
+                                        FROM Appointments A
+
+                                        INNER JOIN Patients P
+                                        ON A.PatientID = P.PatientID
+
+                                        WHERE
+                                            CAST(A.AppointmentDate AS DATE) = CAST(GETDATE() AS DATE)
+
+                                        ORDER BY A.AppointmentTime")
+
+            Dim dt As DataTable = DatabaseHelper.GetDataTable(cmd)
+
+            For Each row As DataRow In dt.Rows
+
+                Dim pnl As New Panel()
+
+                pnl.Width = flpSchedule.ClientSize.Width - 25
+
+                pnl.Height = 70
+
+                pnl.BackColor = Color.White
+
+                pnl.BorderStyle = BorderStyle.FixedSingle
+
+                pnl.Margin = New Padding(5)
+
+                pnl.RightToLeft = RightToLeft.Yes
+
+                ' TIME
+                Dim lblTime As New Label()
+
+                lblTime.Text = DateTime.Today.Add(CType(row("AppointmentTime"), TimeSpan)).ToString("hh:mm tt")
+
+                lblTime.Font = New Font("Segoe UI", 12, FontStyle.Bold)
+
+                lblTime.Location = New Point(10, 10)
+
+                lblTime.AutoSize = True
+
+                lblTime.RightToLeft = RightToLeft.Yes
+
+                ' NAME
+                Dim lblName As New Label()
+
+                lblName.Text = row("FullName").ToString()
+
+                lblName.Font = New Font("Segoe UI", 10)
+
+                lblName.Location = New Point(10, 40)
+
+                lblName.AutoSize = True
+
+                lblName.RightToLeft = RightToLeft.Yes
+
+                pnl.Controls.Add(lblTime)
+
+                pnl.Controls.Add(lblName)
+
+                flpSchedule.Controls.Add(pnl)
+
+            Next
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message)
+
+        End Try
+
+    End Sub
+
+    Private Sub label1_Click(sender As Object, e As EventArgs) Handles label1.Click
+
     End Sub
 End Class
 

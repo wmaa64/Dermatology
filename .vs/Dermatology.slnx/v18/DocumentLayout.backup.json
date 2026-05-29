@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "F:\\vbprojects\\Dermatology\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DAFAEE6F-F5D5-45A0-86C8-E23548E41F7C}|Dermatology.vbproj|F:\\vbprojects\\Dermatology\\uc_appointments.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
-      "RelativeMoniker": "D:0:0:{DAFAEE6F-F5D5-45A0-86C8-E23548E41F7C}|Dermatology.vbproj|solutionrelative:uc_appointments.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+      "AbsoluteMoniker": "D:0:0:{DAFAEE6F-F5D5-45A0-86C8-E23548E41F7C}|Dermatology.vbproj|f:\\vbprojects\\dermatology\\frmpatientprofile.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{DAFAEE6F-F5D5-45A0-86C8-E23548E41F7C}|Dermatology.vbproj|solutionrelative:frmpatientprofile.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DAFAEE6F-F5D5-45A0-86C8-E23548E41F7C}|Dermatology.vbproj|f:\\vbprojects\\dermatology\\uc_appointments.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{DAFAEE6F-F5D5-45A0-86C8-E23548E41F7C}|Dermatology.vbproj|solutionrelative:uc_appointments.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+      "AbsoluteMoniker": "D:0:0:{DAFAEE6F-F5D5-45A0-86C8-E23548E41F7C}|Dermatology.vbproj|f:\\vbprojects\\dermatology\\frmpatientprofile.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{DAFAEE6F-F5D5-45A0-86C8-E23548E41F7C}|Dermatology.vbproj|solutionrelative:frmpatientprofile.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,26 +23,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UC_Appointments.vb",
-              "DocumentMoniker": "F:\\vbprojects\\Dermatology\\UC_Appointments.vb",
-              "RelativeDocumentMoniker": "UC_Appointments.vb",
-              "ToolTip": "F:\\vbprojects\\Dermatology\\UC_Appointments.vb",
-              "RelativeToolTip": "UC_Appointments.vb",
-              "ViewState": "AgIAADgBAAAAAAAAAAAAADgBAAAaAAAAAAAAAA==",
+              "Title": "FrmPatientProfile.vb",
+              "DocumentMoniker": "F:\\vbprojects\\Dermatology\\FrmPatientProfile.vb",
+              "RelativeDocumentMoniker": "FrmPatientProfile.vb",
+              "ToolTip": "F:\\vbprojects\\Dermatology\\FrmPatientProfile.vb",
+              "RelativeToolTip": "FrmPatientProfile.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-25T03:25:36.656Z",
+              "WhenOpened": "2026-05-28T23:32:01.897Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UC_Appointments.vb [Design]",
-              "DocumentMoniker": "F:\\vbprojects\\Dermatology\\UC_Appointments.vb",
-              "RelativeDocumentMoniker": "UC_Appointments.vb",
-              "ToolTip": "F:\\vbprojects\\Dermatology\\UC_Appointments.vb [Design]",
-              "RelativeToolTip": "UC_Appointments.vb [Design]",
+              "Title": "FrmPatientProfile.vb [Design]",
+              "DocumentMoniker": "F:\\vbprojects\\Dermatology\\FrmPatientProfile.vb",
+              "RelativeDocumentMoniker": "FrmPatientProfile.vb",
+              "ToolTip": "F:\\vbprojects\\Dermatology\\FrmPatientProfile.vb [Design]",
+              "RelativeToolTip": "FrmPatientProfile.vb [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
-              "WhenOpened": "2026-05-23T03:30:31.983Z",
+              "WhenOpened": "2026-05-27T02:21:40.367Z",
               "EditorCaption": " [Design]"
             }
           ]

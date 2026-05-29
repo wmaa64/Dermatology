@@ -7,6 +7,8 @@ Public Class FrmPatientProfile
     Private Sub FrmPatientProfile_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadPatientData()
         LoadSessions()
+        LoadMedicalHistory()
+        LoadDoctorNotes()
         LoadSessionsCount()
         LoadFinancialSummary()
     End Sub
@@ -16,23 +18,21 @@ Public Class FrmPatientProfile
 
         Try
 
-            Dim cmd As New SqlCommand("SELECT * FROM Patients WHERE PatientID=@ID", con)
+            Dim cmd As New SqlCommand("SELECT * FROM Patients WHERE PatientID=@ID")
 
             cmd.Parameters.AddWithValue("@ID", PatientID)
 
-            con.Open()
+            Dim dt As DataTable = DatabaseHelper.GetDataTable(cmd)
 
-            Dim dr As SqlDataReader = cmd.ExecuteReader()
+            If dt.Rows.Count > 0 Then
 
-            If dr.Read() Then
+                lblName.Text = dt.Rows(0)("FullName").ToString()
 
-                lblName.Text = dr("FullName").ToString()
+                lblPhone.Text = dt.Rows(0)("Phone").ToString()
 
-                lblPhone.Text = dr("Phone").ToString()
+                lblAge.Text = dt.Rows(0)("Age").ToString()
 
-                lblAge.Text = dr("Age").ToString()
-
-                lblAddress.Text = dr("Address").ToString()
+                lblAddress.Text = dt.Rows(0)("Address").ToString()
 
             End If
 
@@ -48,7 +48,7 @@ Public Class FrmPatientProfile
 
     End Sub
 
-    Private Sub btnAddSession_Click(sender As Object, e As EventArgs) Handles btnAddSession.Click
+    Private Sub btnAddSession_Click(sender As Object, e As EventArgs)
         Dim frm As New FrmAddSession()
 
         frm.PatientID = PatientID
@@ -75,6 +75,8 @@ Public Class FrmPatientProfile
                                        WHERE PatientID=@PatientID
                                        ORDER BY SessionDate DESC")
 
+            cmd.Parameters.AddWithValue("@PatientID", PatientID)
+
             dgvSessions.DataSource = DatabaseHelper.GetDataTable(cmd)
 
         Catch ex As Exception
@@ -98,8 +100,6 @@ Public Class FrmPatientProfile
             lblSessionsCount.Text = "عدد الجلسات: " & count
 
         Catch ex As Exception
-
-            con.Close()
 
             MessageBox.Show(ex.Message)
 
@@ -145,7 +145,37 @@ Public Class FrmPatientProfile
 
         Catch ex As Exception
 
-            con.Close()
+            MessageBox.Show(ex.Message)
+
+        End Try
+
+    End Sub
+
+    Private Sub LoadMedicalHistory()
+
+        Try
+
+            Dim cmd As New SqlCommand("SELECT * FROM MedicalHistory WHERE PatientID=@PatientID")
+
+            cmd.Parameters.AddWithValue("@PatientID", PatientID)
+
+            Dim dt As DataTable = DatabaseHelper.GetDataTable(cmd)
+
+            If dt.Rows.Count > 0 Then
+
+                txtAllergies.Text = dt.Rows(0)("Allergies").ToString()
+
+                txtConditions.Text = dt.Rows(0)("MedicalConditions").ToString()
+
+                txtMedications.Text = dt.Rows(0)("CurrentMedications").ToString()
+
+                cbSkinType.Text = dt.Rows(0)("SkinType").ToString()
+
+                txtMedicalNotes.Text = dt.Rows(0)("Notes").ToString()
+
+            End If
+
+        Catch ex As Exception
 
             MessageBox.Show(ex.Message)
 
@@ -153,7 +183,8 @@ Public Class FrmPatientProfile
 
     End Sub
 
-    Private Sub btnAddPayment_Click(sender As Object, e As EventArgs) Handles btnAddPayment.Click
+
+    Private Sub btnAddPayment_Click(sender As Object, e As EventArgs)
         Dim frm As New FrmAddPayment()
 
         frm.PatientID = PatientID
@@ -162,4 +193,207 @@ Public Class FrmPatientProfile
 
         LoadFinancialSummary()
     End Sub
+
+
+    Private Sub btnSaveMedical_Click(sender As Object, e As EventArgs) Handles btnSaveMedical.Click
+
+        Try
+
+            ' هل يوجد سجل مسبق؟
+
+            Dim checkCmd As New SqlCommand("SELECT COUNT(*) FROM MedicalHistory  WHERE PatientID=@PatientID")
+
+            checkCmd.Parameters.AddWithValue("@PatientID", PatientID)
+
+            Dim exists As Integer = DatabaseHelper.ExecuteScalar(checkCmd)
+
+            Dim query As String = ""
+
+            If exists = 0 Then
+
+                ' INSERT
+
+                query = "INSERT INTO MedicalHistory
+                        (
+                            PatientID,
+                            Allergies,
+                            MedicalConditions,
+                            CurrentMedications,
+                            SkinType,
+                            Notes
+                        )
+
+                        VALUES
+                        (
+                            @PatientID,
+                            @Allergies,
+                            @MedicalConditions,
+                            @CurrentMedications,
+                            @SkinType,
+                            @Notes
+                        )"
+
+            ElseIf exists = 1 Then
+
+                ' UPDATE
+
+                query = "UPDATE MedicalHistory
+
+                         SET
+
+                            Allergies=@Allergies,
+
+                            MedicalConditions=@MedicalConditions,
+
+                            CurrentMedications=@CurrentMedications,
+
+                            SkinType=@SkinType,
+
+                            Notes=@Notes
+
+                         WHERE PatientID=@PatientID"
+            Else
+
+                MsgBox("error")
+                Exit Sub
+
+            End If
+
+            Dim cmd As New SqlCommand(query)
+
+            cmd.Parameters.AddWithValue("@PatientID", PatientID)
+
+            cmd.Parameters.AddWithValue("@Allergies", txtAllergies.Text)
+
+            cmd.Parameters.AddWithValue("@MedicalConditions", txtConditions.Text)
+
+            cmd.Parameters.AddWithValue("@CurrentMedications", txtMedications.Text)
+
+            cmd.Parameters.AddWithValue("@SkinType", cbSkinType.Text)
+
+            cmd.Parameters.AddWithValue("@Notes", txtMedicalNotes.Text)
+
+            DatabaseHelper.ExecuteNonQuery(cmd)
+
+            MessageBox.Show("تم حفظ التاريخ المرضي")
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message)
+
+        End Try
+
+    End Sub
+
+    Private Sub btnAddNote_Click(sender As Object, e As EventArgs) Handles btnAddNote.Click
+        Try
+
+            If txtDoctorNote.Text.Trim = "" Then
+
+                MessageBox.Show("اكتب الملاحظة")
+
+                Exit Sub
+
+            End If
+
+            Dim cmd As New SqlCommand("INSERT INTO DoctorNotes
+                                        (
+                                            PatientID,
+                                            NoteText
+                                        )
+
+                                        VALUES
+                                        (
+                                            @PatientID,
+                                            @NoteText
+                                        )")
+
+            cmd.Parameters.AddWithValue("@PatientID", PatientID)
+
+            cmd.Parameters.AddWithValue("@NoteText", txtDoctorNote.Text)
+
+            DatabaseHelper.ExecuteNonQuery(cmd)
+
+            txtDoctorNote.Clear()
+
+            LoadDoctorNotes()
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message)
+
+        End Try
+
+    End Sub
+
+    Private Sub LoadDoctorNotes()
+
+        Try
+
+            flpNotes.Controls.Clear()
+
+            Dim cmd As New SqlCommand("SELECT *  FROM DoctorNotes  WHERE PatientID=@PatientID
+
+                                         ORDER BY CreatedAt DESC")
+
+            cmd.Parameters.AddWithValue("@PatientID", PatientID)
+
+            Dim dt As DataTable = DatabaseHelper.GetDataTable(cmd)
+
+            For Each row As DataRow In dt.Rows
+
+                Dim pnl As New Panel()
+
+                pnl.Width = flpNotes.ClientSize.Width - 25
+
+                pnl.Height = 120
+
+                pnl.BackColor = Color.White
+
+                pnl.BorderStyle = BorderStyle.FixedSingle
+
+                pnl.Margin = New Padding(5)
+
+                ' DATE
+                Dim lblDate As New Label()
+
+                lblDate.Text = Convert.ToDateTime(row("CreatedAt")).ToString("dd MMM yyyy hh:mm tt")
+
+                lblDate.Font = New Font("Segoe UI", 9, FontStyle.Bold)
+
+                lblDate.ForeColor = Color.Gray
+
+                lblDate.Location = New Point(10, 10)
+
+                lblDate.AutoSize = True
+
+                ' NOTE
+                Dim lblNote As New Label()
+
+                lblNote.Text = row("NoteText").ToString()
+
+                lblNote.Font = New Font("Segoe UI", 10)
+
+                lblNote.Location = New Point(10, 40)
+
+                lblNote.MaximumSize = New Size(pnl.Width - 20, 0)
+
+                lblNote.AutoSize = True
+
+                pnl.Controls.Add(lblDate)
+
+                pnl.Controls.Add(lblNote)
+
+                flpNotes.Controls.Add(pnl)
+
+            Next
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message)
+
+        End Try
+
+    End Sub
+
 End Class

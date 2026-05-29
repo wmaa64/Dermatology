@@ -38,33 +38,36 @@ Partial Class UC_Appointments
         Me.btnPending = New System.Windows.Forms.Button()
         Me.btnTomorrow = New System.Windows.Forms.Button()
         Me.btnToday = New System.Windows.Forms.Button()
+        Me.grpTodaySchedule = New System.Windows.Forms.GroupBox()
+        Me.flpSchedule = New System.Windows.Forms.FlowLayoutPanel()
         CType(Me.dgvAppointments, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.cmsAppointmentStatus.SuspendLayout()
         Me.flpFilters.SuspendLayout()
+        Me.grpTodaySchedule.SuspendLayout()
         Me.SuspendLayout()
         '
         'label1
         '
         Me.label1.AutoSize = True
-        Me.label1.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.label1.Location = New System.Drawing.Point(484, 47)
+        Me.label1.Font = New System.Drawing.Font("Tahoma", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.label1.Location = New System.Drawing.Point(667, 8)
         Me.label1.Name = "label1"
-        Me.label1.Size = New System.Drawing.Size(351, 18)
+        Me.label1.Size = New System.Drawing.Size(106, 17)
         Me.label1.TabIndex = 7
-        Me.label1.Text = "البحث عن حجز مريض بجزء من الاسم / او بتليفونه"
+        Me.label1.Text = "البحث عن حجز"
         '
         'dgvAppointments
         '
         Me.dgvAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvAppointments.ContextMenuStrip = Me.cmsAppointmentStatus
-        Me.dgvAppointments.Location = New System.Drawing.Point(0, 172)
+        Me.dgvAppointments.Location = New System.Drawing.Point(0, 68)
         Me.dgvAppointments.Name = "dgvAppointments"
         Me.dgvAppointments.ReadOnly = True
         Me.dgvAppointments.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.dgvAppointments.RowHeadersVisible = False
         Me.dgvAppointments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvAppointments.Size = New System.Drawing.Size(855, 411)
+        Me.dgvAppointments.Size = New System.Drawing.Size(780, 394)
         Me.dgvAppointments.TabIndex = 6
         '
         'cmsAppointmentStatus
@@ -73,14 +76,14 @@ Partial Class UC_Appointments
         Me.cmsAppointmentStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miConfirm, Me.miDone, Me.miCancel})
         Me.cmsAppointmentStatus.Name = "cmsAppointmentStatus"
         Me.cmsAppointmentStatus.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.cmsAppointmentStatus.Size = New System.Drawing.Size(181, 98)
+        Me.cmsAppointmentStatus.Size = New System.Drawing.Size(134, 76)
         '
         'miConfirm
         '
         Me.miConfirm.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.miConfirm.ForeColor = System.Drawing.Color.White
         Me.miConfirm.Name = "miConfirm"
-        Me.miConfirm.Size = New System.Drawing.Size(180, 24)
+        Me.miConfirm.Size = New System.Drawing.Size(133, 24)
         Me.miConfirm.Text = "Confirm"
         '
         'miDone
@@ -88,7 +91,7 @@ Partial Class UC_Appointments
         Me.miDone.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.miDone.ForeColor = System.Drawing.Color.White
         Me.miDone.Name = "miDone"
-        Me.miDone.Size = New System.Drawing.Size(180, 24)
+        Me.miDone.Size = New System.Drawing.Size(133, 24)
         Me.miDone.Text = "Done"
         '
         'miCancel
@@ -96,7 +99,7 @@ Partial Class UC_Appointments
         Me.miCancel.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.miCancel.ForeColor = System.Drawing.Color.White
         Me.miCancel.Name = "miCancel"
-        Me.miCancel.Size = New System.Drawing.Size(180, 24)
+        Me.miCancel.Size = New System.Drawing.Size(133, 24)
         Me.miCancel.Text = "Cancel"
         '
         'btnAddAppointment
@@ -104,9 +107,9 @@ Partial Class UC_Appointments
         Me.btnAddAppointment.BackColor = System.Drawing.Color.Blue
         Me.btnAddAppointment.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAddAppointment.ForeColor = System.Drawing.Color.White
-        Me.btnAddAppointment.Location = New System.Drawing.Point(683, 3)
+        Me.btnAddAppointment.Location = New System.Drawing.Point(854, 17)
         Me.btnAddAppointment.Name = "btnAddAppointment"
-        Me.btnAddAppointment.Size = New System.Drawing.Size(152, 36)
+        Me.btnAddAppointment.Size = New System.Drawing.Size(107, 36)
         Me.btnAddAppointment.TabIndex = 5
         Me.btnAddAppointment.Text = "حجز جديد"
         Me.btnAddAppointment.UseVisualStyleBackColor = False
@@ -115,10 +118,10 @@ Partial Class UC_Appointments
         '
         Me.txtSearch.Font = New System.Drawing.Font("Tahoma", 11.0!)
         Me.txtSearch.ForeColor = System.Drawing.Color.Black
-        Me.txtSearch.Location = New System.Drawing.Point(308, 68)
+        Me.txtSearch.Location = New System.Drawing.Point(549, 28)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtSearch.Size = New System.Drawing.Size(527, 25)
+        Me.txtSearch.Size = New System.Drawing.Size(221, 25)
         Me.txtSearch.TabIndex = 4
         '
         'flpFilters
@@ -130,7 +133,7 @@ Partial Class UC_Appointments
         Me.flpFilters.Controls.Add(Me.btnTomorrow)
         Me.flpFilters.Controls.Add(Me.btnToday)
         Me.flpFilters.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft
-        Me.flpFilters.Location = New System.Drawing.Point(308, 105)
+        Me.flpFilters.Location = New System.Drawing.Point(3, 17)
         Me.flpFilters.Name = "flpFilters"
         Me.flpFilters.Size = New System.Drawing.Size(527, 45)
         Me.flpFilters.TabIndex = 8
@@ -207,10 +210,33 @@ Partial Class UC_Appointments
         Me.btnToday.Text = "اليوم"
         Me.btnToday.UseVisualStyleBackColor = False
         '
+        'grpTodaySchedule
+        '
+        Me.grpTodaySchedule.Controls.Add(Me.flpSchedule)
+        Me.grpTodaySchedule.Location = New System.Drawing.Point(799, 68)
+        Me.grpTodaySchedule.Name = "grpTodaySchedule"
+        Me.grpTodaySchedule.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.grpTodaySchedule.Size = New System.Drawing.Size(181, 394)
+        Me.grpTodaySchedule.TabIndex = 9
+        Me.grpTodaySchedule.TabStop = False
+        Me.grpTodaySchedule.Text = "جدول اليوم"
+        '
+        'flpSchedule
+        '
+        Me.flpSchedule.AutoScroll = True
+        Me.flpSchedule.FlowDirection = System.Windows.Forms.FlowDirection.TopDown
+        Me.flpSchedule.Location = New System.Drawing.Point(6, 19)
+        Me.flpSchedule.Name = "flpSchedule"
+        Me.flpSchedule.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.flpSchedule.Size = New System.Drawing.Size(166, 372)
+        Me.flpSchedule.TabIndex = 0
+        Me.flpSchedule.WrapContents = False
+        '
         'UC_Appointments
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.grpTodaySchedule)
         Me.Controls.Add(Me.flpFilters)
         Me.Controls.Add(Me.label1)
         Me.Controls.Add(Me.dgvAppointments)
@@ -218,10 +244,11 @@ Partial Class UC_Appointments
         Me.Controls.Add(Me.txtSearch)
         Me.Name = "UC_Appointments"
         Me.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.Size = New System.Drawing.Size(870, 583)
+        Me.Size = New System.Drawing.Size(980, 583)
         CType(Me.dgvAppointments, System.ComponentModel.ISupportInitialize).EndInit()
         Me.cmsAppointmentStatus.ResumeLayout(False)
         Me.flpFilters.ResumeLayout(False)
+        Me.grpTodaySchedule.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -242,4 +269,6 @@ Partial Class UC_Appointments
     Friend WithEvents miConfirm As ToolStripMenuItem
     Friend WithEvents miDone As ToolStripMenuItem
     Friend WithEvents miCancel As ToolStripMenuItem
+    Friend WithEvents grpTodaySchedule As GroupBox
+    Friend WithEvents flpSchedule As FlowLayoutPanel
 End Class

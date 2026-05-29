@@ -116,11 +116,13 @@ Public Class UC_Patients
     End Sub
 
     Private Sub dgvPatients_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvPatients.CellDoubleClick
+
         Dim frm As New FrmPatientProfile()
 
         frm.PatientID = dgvPatients.CurrentRow.Cells("الكود").Value
 
         frm.ShowDialog()
+
     End Sub
 
     Private Sub dgvPatients_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvPatients.CellClick
