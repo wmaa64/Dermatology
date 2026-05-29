@@ -113,6 +113,12 @@
     <Compile Include="FrmPatientProfile.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmSessionDetails.Designer.vb">
+      <DependentUpon>FrmSessionDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSessionDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPatientProfile.resx">
       <DependentUpon>FrmPatientProfile.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSessionDetails.resx">
+      <DependentUpon>FrmSessionDetails.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

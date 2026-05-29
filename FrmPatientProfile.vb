@@ -9,6 +9,7 @@ Public Class FrmPatientProfile
         LoadSessions()
         LoadMedicalHistory()
         LoadDoctorNotes()
+        LoadPatientPhotos()
         LoadSessionsCount()
         LoadFinancialSummary()
     End Sub
@@ -65,7 +66,8 @@ Public Class FrmPatientProfile
     Private Sub LoadSessions()
 
         Try
-            Dim cmd As New SqlCommand("SELECT
+            Dim cmd As New SqlCommand("SELECT 
+                                            SessionID,
                                             SessionDate AS 'تاريخ الجلسة',
                                             Area AS 'المنطقة',
                                             Device AS 'الجهاز',
@@ -385,6 +387,176 @@ Public Class FrmPatientProfile
                 pnl.Controls.Add(lblNote)
 
                 flpNotes.Controls.Add(pnl)
+
+            Next
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message)
+
+        End Try
+
+    End Sub
+
+    Private Sub dgvSessions_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSessions.CellContentClick
+
+    End Sub
+
+    Private Sub dgvSessions_CellMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgvSessions.CellMouseDoubleClick
+
+        If e.RowIndex >= 0 Then
+
+            Dim frm As New FrmSessionDetails()
+
+            frm.SessionID = dgvSessions.Rows(e.RowIndex).Cells("SessionID").Value
+
+            frm.ShowDialog()
+
+        End If
+
+    End Sub
+
+    Private Sub btnAddPhoto_Click(sender As Object, e As EventArgs) Handles btnAddPhoto.Click
+        Try
+
+            Dim ofd As New OpenFileDialog()
+
+            ofd.Filter = "Images|*.jpg;*.jpeg;*.png"
+
+            If ofd.ShowDialog = DialogResult.OK Then
+
+                ' Folder
+                Dim folder As String = "F:\PatientPhotos"
+
+                ' إنشاء الفولدر إذا غير موجود
+                If Not IO.Directory.Exists(folder) Then
+
+                    IO.Directory.CreateDirectory(folder)
+
+                End If
+
+                ' نوع الصورة
+                Dim photoType As String = InputBox("Type: Before / After / Progress")
+
+                If photoType.Trim = "" Then Exit Sub
+
+                ' الامتداد
+                Dim extension As String = IO.Path.GetExtension(ofd.FileName)
+
+                ' اسم الصورة
+                Dim fileName As String =
+                photoType.ToLower() & "_" & PatientID & "_" & DateTime.Now.ToString("yyyyMMddHHmmss") & extension
+
+                ' المسار النهائي
+                Dim destination As String = IO.Path.Combine(folder, fileName)
+
+                ' نسخ الصورة
+                IO.File.Copy(ofd.FileName, destination, True)
+
+                ' حفظ في قاعدة البيانات
+                Dim cmd As New SqlCommand("INSERT INTO PatientPhotos
+                                            (
+                                                PatientID,
+                                                PhotoPath,
+                                                PhotoType
+                                            )
+
+                                            VALUES
+                                            (
+                                                @PatientID,
+                                                @PhotoPath,
+                                                @PhotoType
+                                            )")
+
+                cmd.Parameters.AddWithValue("@PatientID", PatientID)
+
+                cmd.Parameters.AddWithValue("@PhotoPath", destination)
+
+                cmd.Parameters.AddWithValue("@PhotoType", photoType)
+
+                DatabaseHelper.ExecuteNonQuery(cmd)
+
+                LoadPatientPhotos()
+
+                MessageBox.Show(
+                    "Photo Added Successfully")
+
+            End If
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message)
+
+        End Try
+
+    End Sub
+
+    Private Sub LoadPatientPhotos()
+
+        Try
+
+            flpPhotos.Controls.Clear()
+
+            Dim cmd As New SqlCommand("SELECT *  FROM PatientPhotos  WHERE PatientID=@PatientID
+         
+                                        ORDER BY PhotoDate DESC")
+
+            cmd.Parameters.AddWithValue("@PatientID", PatientID)
+
+            Dim dt As DataTable = DatabaseHelper.GetDataTable(cmd)
+
+            For Each row As DataRow In dt.Rows
+
+                Dim pnl As New Panel()
+
+                pnl.Width = 220
+
+                pnl.Height = 260
+
+                pnl.BorderStyle = BorderStyle.FixedSingle
+
+                pnl.Margin = New Padding(10)
+
+                ' Picture
+                Dim pic As New PictureBox()
+
+                pic.Width = 200
+
+                pic.Height = 180
+
+                pic.SizeMode = PictureBoxSizeMode.Zoom
+
+                pic.Image = Image.FromFile(row("PhotoPath").ToString())
+
+                pic.Location = New Point(10, 10)
+
+                ' Type
+                Dim lblType As New Label()
+
+                lblType.Text = row("PhotoType").ToString()
+
+                lblType.Font = New Font("Segoe UI", 10, FontStyle.Bold)
+
+                lblType.Location = New Point(10, 200)
+
+                lblType.AutoSize = True
+
+                ' Date
+                Dim lblDate As New Label()
+
+                lblDate.Text = Convert.ToDateTime(row("PhotoDate")).ToString("dd MMM yyyy")
+
+                lblDate.Location = New Point(10, 225)
+
+                lblDate.AutoSize = True
+
+                pnl.Controls.Add(pic)
+
+                pnl.Controls.Add(lblType)
+
+                pnl.Controls.Add(lblDate)
+
+                flpPhotos.Controls.Add(pnl)
 
             Next
 

@@ -56,6 +56,9 @@ Partial Class FrmPatientProfile
         Me.txtAllergies = New System.Windows.Forms.RichTextBox()
         Me.tabOverview = New System.Windows.Forms.TabPage()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.flpPhotos = New System.Windows.Forms.FlowLayoutPanel()
+        Me.btnAddPhoto = New System.Windows.Forms.Button()
+        Me.tabPhotos.SuspendLayout()
         Me.tabNotes.SuspendLayout()
         Me.tabPayments.SuspendLayout()
         Me.tabSessions.SuspendLayout()
@@ -107,9 +110,12 @@ Partial Class FrmPatientProfile
         '
         'tabPhotos
         '
+        Me.tabPhotos.Controls.Add(Me.btnAddPhoto)
+        Me.tabPhotos.Controls.Add(Me.flpPhotos)
         Me.tabPhotos.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
         Me.tabPhotos.Location = New System.Drawing.Point(4, 22)
         Me.tabPhotos.Name = "tabPhotos"
+        Me.tabPhotos.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.tabPhotos.Size = New System.Drawing.Size(915, 574)
         Me.tabPhotos.TabIndex = 5
         Me.tabPhotos.Text = "الصور"
@@ -451,6 +457,28 @@ Partial Class FrmPatientProfile
         Me.TabControl1.Size = New System.Drawing.Size(923, 600)
         Me.TabControl1.TabIndex = 12
         '
+        'flpPhotos
+        '
+        Me.flpPhotos.AutoScroll = True
+        Me.flpPhotos.Location = New System.Drawing.Point(14, 59)
+        Me.flpPhotos.Name = "flpPhotos"
+        Me.flpPhotos.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.flpPhotos.Size = New System.Drawing.Size(884, 499)
+        Me.flpPhotos.TabIndex = 5
+        Me.flpPhotos.WrapContents = False
+        '
+        'btnAddPhoto
+        '
+        Me.btnAddPhoto.BackColor = System.Drawing.Color.Blue
+        Me.btnAddPhoto.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.btnAddPhoto.ForeColor = System.Drawing.Color.White
+        Me.btnAddPhoto.Location = New System.Drawing.Point(761, 19)
+        Me.btnAddPhoto.Name = "btnAddPhoto"
+        Me.btnAddPhoto.Size = New System.Drawing.Size(112, 34)
+        Me.btnAddPhoto.TabIndex = 14
+        Me.btnAddPhoto.Text = "إضافة صورة"
+        Me.btnAddPhoto.UseVisualStyleBackColor = False
+        '
         'FrmPatientProfile
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -464,6 +492,7 @@ Partial Class FrmPatientProfile
         Me.Name = "FrmPatientProfile"
         Me.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.Text = "FrmPatientProfile"
+        Me.tabPhotos.ResumeLayout(False)
         Me.tabNotes.ResumeLayout(False)
         Me.tabNotes.PerformLayout()
         Me.tabPayments.ResumeLayout(False)
@@ -514,4 +543,6 @@ Partial Class FrmPatientProfile
     Friend WithEvents Label6 As Label
     Friend WithEvents txtDoctorNote As RichTextBox
     Friend WithEvents flpNotes As FlowLayoutPanel
+    Friend WithEvents flpPhotos As FlowLayoutPanel
+    Friend WithEvents btnAddPhoto As Button
 End Class

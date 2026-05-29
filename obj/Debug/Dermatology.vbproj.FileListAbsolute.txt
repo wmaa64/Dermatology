@@ -18,3 +18,4 @@ F:\vbprojects\Dermatology\obj\Debug\Dermatology.FrmAddSession.resources
 F:\vbprojects\Dermatology\obj\Debug\Dermatology.FrmAddPayment.resources
 F:\vbprojects\Dermatology\obj\Debug\Dermatology.FrmAddAppointment.resources
 F:\vbprojects\Dermatology\obj\Debug\Dermatology.UC_Appointments.resources
+F:\vbprojects\Dermatology\obj\Debug\Dermatology.FrmSessionDetails.resources
