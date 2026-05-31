@@ -4,12 +4,16 @@ Imports System.Data
 Public Class FrmPatientProfile
     Public PatientID As Integer
 
+    Private SelectedPlanID As Integer = 0
+
     Private Sub FrmPatientProfile_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadPatientData()
+        LoadTreatmentPlans()
         LoadSessions()
         LoadMedicalHistory()
         LoadDoctorNotes()
         LoadPatientPhotos()
+        LoadPhotoPlans()
         LoadSessionsCount()
         LoadFinancialSummary()
     End Sub
@@ -37,11 +41,7 @@ Public Class FrmPatientProfile
 
             End If
 
-            con.Close()
-
         Catch ex As Exception
-
-            con.Close()
 
             MessageBox.Show(ex.Message)
 
@@ -49,7 +49,8 @@ Public Class FrmPatientProfile
 
     End Sub
 
-    Private Sub btnAddSession_Click(sender As Object, e As EventArgs)
+
+    Private Sub btnAddSession_Click(sender As Object, e As EventArgs) Handles btnAddSession.Click
         Dim frm As New FrmAddSession()
 
         frm.PatientID = PatientID
@@ -186,7 +187,7 @@ Public Class FrmPatientProfile
     End Sub
 
 
-    Private Sub btnAddPayment_Click(sender As Object, e As EventArgs)
+    Private Sub btnAddPayment_Click(sender As Object, e As EventArgs) Handles btnAddPayment.Click
         Dim frm As New FrmAddPayment()
 
         frm.PatientID = PatientID
@@ -418,6 +419,13 @@ Public Class FrmPatientProfile
 
     Private Sub btnAddPhoto_Click(sender As Object, e As EventArgs) Handles btnAddPhoto.Click
         Try
+            If cbPhotoPlan.SelectedValue Is Nothing Then
+
+                MessageBox.Show("Please select a treatment plan.")
+
+                Exit Sub
+
+            End If
 
             Dim ofd As New OpenFileDialog()
 
@@ -425,30 +433,41 @@ Public Class FrmPatientProfile
 
             If ofd.ShowDialog = DialogResult.OK Then
 
-                ' Folder
-                Dim folder As String = "F:\PatientPhotos"
-
-                ' إنشاء الفولدر إذا غير موجود
-                If Not IO.Directory.Exists(folder) Then
-
-                    IO.Directory.CreateDirectory(folder)
-
-                End If
+                Dim planID As Integer = CInt(cbPhotoPlan.SelectedValue)
 
                 ' نوع الصورة
                 Dim photoType As String = InputBox("Type: Before / After / Progress")
 
                 If photoType.Trim = "" Then Exit Sub
 
-                ' الامتداد
+                ' إنشاء المجلدات
+                Dim rootFolder As String = "F:\PatientPhotos"
+
+                Dim patientFolder As String = IO.Path.Combine(rootFolder, "Patient_" & PatientID)
+
+                Dim planFolder As String = IO.Path.Combine(patientFolder, "Plan_" & planID)
+
+                If Not IO.Directory.Exists(planFolder) Then
+
+                    IO.Directory.CreateDirectory(planFolder)
+
+                End If
+
+                If Not IO.Directory.Exists(planFolder) Then
+
+                    IO.Directory.CreateDirectory(planFolder)
+
+                End If
+
+                ' امتداد الملف
                 Dim extension As String = IO.Path.GetExtension(ofd.FileName)
 
-                ' اسم الصورة
+                ' اسم الملف
                 Dim fileName As String =
-                photoType.ToLower() & "_" & PatientID & "_" & DateTime.Now.ToString("yyyyMMddHHmmss") & extension
+                    photoType.ToLower() & "_" & DateTime.Now.ToString("yyyyMMddHHmmss") & extension
 
                 ' المسار النهائي
-                Dim destination As String = IO.Path.Combine(folder, fileName)
+                Dim destination As String = IO.Path.Combine(planFolder, fileName)
 
                 ' نسخ الصورة
                 IO.File.Copy(ofd.FileName, destination, True)
@@ -457,6 +476,7 @@ Public Class FrmPatientProfile
                 Dim cmd As New SqlCommand("INSERT INTO PatientPhotos
                                             (
                                                 PatientID,
+                                                PlanID,
                                                 PhotoPath,
                                                 PhotoType
                                             )
@@ -464,11 +484,14 @@ Public Class FrmPatientProfile
                                             VALUES
                                             (
                                                 @PatientID,
+                                                @PlanID,
                                                 @PhotoPath,
                                                 @PhotoType
                                             )")
 
                 cmd.Parameters.AddWithValue("@PatientID", PatientID)
+
+                cmd.Parameters.AddWithValue("@PlanID", cbPhotoPlan.SelectedValue)
 
                 cmd.Parameters.AddWithValue("@PhotoPath", destination)
 
@@ -478,8 +501,7 @@ Public Class FrmPatientProfile
 
                 LoadPatientPhotos()
 
-                MessageBox.Show(
-                    "Photo Added Successfully")
+                MessageBox.Show("Photo Added Successfully")
 
             End If
 
@@ -494,14 +516,20 @@ Public Class FrmPatientProfile
     Private Sub LoadPatientPhotos()
 
         Try
+            If cbPhotoPlan.SelectedValue Is Nothing Then Exit Sub
+
+            If TypeOf cbPhotoPlan.SelectedValue Is DataRowView Then Exit Sub
 
             flpPhotos.Controls.Clear()
 
-            Dim cmd As New SqlCommand("SELECT *  FROM PatientPhotos  WHERE PatientID=@PatientID
-         
-                                        ORDER BY PhotoDate DESC")
+            Dim cmd As New SqlCommand("SELECT *  FROM PatientPhotos  
+                                        WHERE PatientID=@PatientID 
+                                         AND PlanID=@PlanID
+                                         ORDER BY PhotoDate DESC")
 
             cmd.Parameters.AddWithValue("@PatientID", PatientID)
+
+            cmd.Parameters.AddWithValue("@PlanID", Convert.ToInt32(cbPhotoPlan.SelectedValue))
 
             Dim dt As DataTable = DatabaseHelper.GetDataTable(cmd)
 
@@ -566,6 +594,160 @@ Public Class FrmPatientProfile
 
         End Try
 
+    End Sub
+
+    Private Sub txtPlanName_TextChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub tabTreatmentPlan_Click(sender As Object, e As EventArgs) Handles tabTreatmentPlan.Click
+
+    End Sub
+
+    Private Sub LoadTreatmentPlans()
+
+        Try
+
+            Dim cmd As New SqlCommand("SELECT
+
+                                        PlanID,
+
+                                        PlanName AS 'الخطة',
+
+                                        TreatmentArea AS 'المنطقة',
+
+                                        PlannedSessions AS 'الجلسات',
+
+                                        Status AS 'الحالة',
+
+                                        StartDate AS 'تاريخ البداية'
+
+                                    FROM TreatmentPlans
+
+                                    WHERE PatientID=@PatientID
+
+                                    ORDER BY StartDate DESC")
+
+            cmd.Parameters.AddWithValue("@PatientID", PatientID)
+
+            dgvTreatmentPlans.DataSource = DatabaseHelper.GetDataTable(cmd)
+
+            If dgvTreatmentPlans.Rows.Count > 0 Then
+
+                dgvTreatmentPlans.Rows(0).Selected = True
+
+                SelectedPlanID = CInt(dgvTreatmentPlans.Rows(0).Cells("PlanID").Value)
+
+                LoadPlanProgress(SelectedPlanID)
+
+            End If
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message)
+
+        End Try
+
+    End Sub
+    Private Sub LoadPlanProgress(PlanID As Integer)
+
+        Try
+
+            Dim cmd1 As New SqlCommand("SELECT PlannedSessions  FROM TreatmentPlans  WHERE PlanID=@PlanID")
+
+            cmd1.Parameters.AddWithValue("@PlanID", PlanID)
+
+            Dim planned As Integer = DatabaseHelper.ExecuteScalar(cmd1)
+
+            Dim cmd2 As New SqlCommand("SELECT COUNT(*)   FROM LaserSessions  WHERE PlanID=@PlanID")
+
+            cmd2.Parameters.AddWithValue("@PlanID", PlanID)
+
+            Dim completed As Integer = DatabaseHelper.ExecuteScalar(cmd2)
+
+            Dim remaining As Integer = planned - completed
+
+            Dim progress As Decimal = 0
+
+            If planned > 0 Then
+
+                progress = (completed * 100D) / planned
+
+            End If
+
+            lblCompleted.Text = "تم: " & completed
+
+            lblRemainingSessions.Text = "متبقي: " & remaining
+
+            lblProgress.Text = progress.ToString("0") & "%"
+
+            prgTreatment.Value = Math.Min(CInt(progress), 100)
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message)
+
+        End Try
+
+    End Sub
+
+    Private Sub btnNewPlan_Click(sender As Object, e As EventArgs) Handles btnNewPlan.Click
+        Dim frm As New FrmTreatmentPlan()
+
+        frm.PatientID = PatientID
+
+        If frm.ShowDialog() = DialogResult.OK Then
+
+            LoadTreatmentPlans()
+
+        End If
+
+    End Sub
+
+    Private Sub dgvTreatmentPlans_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvTreatmentPlans.CellContentClick
+
+    End Sub
+
+    Private Sub dgvTreatmentPlans_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvTreatmentPlans.CellDoubleClick
+        If e.RowIndex >= 0 Then
+
+            Dim frm As New FrmTreatmentPlan()
+
+            frm.PlanID = dgvTreatmentPlans.Rows(e.RowIndex).Cells("PlanID").Value
+
+            frm.ShowDialog()
+
+        End If
+    End Sub
+
+    Private Sub dgvTreatmentPlans_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvTreatmentPlans.CellClick
+        If e.RowIndex < 0 Then Exit Sub
+
+        SelectedPlanID = CInt(dgvTreatmentPlans.Rows(e.RowIndex).Cells("PlanID").Value)
+
+        LoadPlanProgress(SelectedPlanID)
+    End Sub
+
+    Private Sub LoadPhotoPlans()
+
+        Dim cmd As New SqlCommand("SELECT  PlanID, PlanName  FROM TreatmentPlans  WHERE PatientID=@PatientID
+
+                                     ORDER BY StartDate DESC")
+
+        cmd.Parameters.AddWithValue("@PatientID", PatientID)
+
+        Dim dt As DataTable = DatabaseHelper.GetDataTable(cmd)
+
+        cbPhotoPlan.DataSource = dt
+
+        cbPhotoPlan.DisplayMember = "PlanName"
+
+        cbPhotoPlan.ValueMember = "PlanID"
+
+    End Sub
+
+    Private Sub cbPhotoPlan_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbPhotoPlan.SelectedIndexChanged
+        LoadPatientPhotos()
     End Sub
 
 End Class

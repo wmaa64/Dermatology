@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmPatientProfile
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,13 +20,15 @@ Partial Class FrmPatientProfile
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.lblName = New System.Windows.Forms.Label()
         Me.lblPhone = New System.Windows.Forms.Label()
         Me.lblAge = New System.Windows.Forms.Label()
         Me.lblAddress = New System.Windows.Forms.Label()
         Me.tabPhotos = New System.Windows.Forms.TabPage()
+        Me.btnAddPhoto = New System.Windows.Forms.Button()
+        Me.flpPhotos = New System.Windows.Forms.FlowLayoutPanel()
         Me.tabNotes = New System.Windows.Forms.TabPage()
         Me.flpNotes = New System.Windows.Forms.FlowLayoutPanel()
         Me.btnAddNote = New System.Windows.Forms.Button()
@@ -56,8 +58,15 @@ Partial Class FrmPatientProfile
         Me.txtAllergies = New System.Windows.Forms.RichTextBox()
         Me.tabOverview = New System.Windows.Forms.TabPage()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.flpPhotos = New System.Windows.Forms.FlowLayoutPanel()
-        Me.btnAddPhoto = New System.Windows.Forms.Button()
+        Me.tabTreatmentPlan = New System.Windows.Forms.TabPage()
+        Me.prgTreatment = New System.Windows.Forms.ProgressBar()
+        Me.lblProgress = New System.Windows.Forms.Label()
+        Me.lblRemainingSessions = New System.Windows.Forms.Label()
+        Me.lblCompleted = New System.Windows.Forms.Label()
+        Me.dgvTreatmentPlans = New System.Windows.Forms.DataGridView()
+        Me.btnNewPlan = New System.Windows.Forms.Button()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.cbPhotoPlan = New System.Windows.Forms.ComboBox()
         Me.tabPhotos.SuspendLayout()
         Me.tabNotes.SuspendLayout()
         Me.tabPayments.SuspendLayout()
@@ -66,13 +75,15 @@ Partial Class FrmPatientProfile
         CType(Me.dgvSessions, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabMedical.SuspendLayout()
         Me.TabControl1.SuspendLayout()
+        Me.tabTreatmentPlan.SuspendLayout()
+        CType(Me.dgvTreatmentPlans, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblName
         '
         Me.lblName.AutoSize = True
         Me.lblName.Font = New System.Drawing.Font("Tahoma", 12.0!)
-        Me.lblName.Location = New System.Drawing.Point(799, 9)
+        Me.lblName.Location = New System.Drawing.Point(824, 9)
         Me.lblName.Name = "lblName"
         Me.lblName.Size = New System.Drawing.Size(94, 19)
         Me.lblName.TabIndex = 0
@@ -110,16 +121,40 @@ Partial Class FrmPatientProfile
         '
         'tabPhotos
         '
+        Me.tabPhotos.Controls.Add(Me.Label12)
+        Me.tabPhotos.Controls.Add(Me.cbPhotoPlan)
         Me.tabPhotos.Controls.Add(Me.btnAddPhoto)
         Me.tabPhotos.Controls.Add(Me.flpPhotos)
-        Me.tabPhotos.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.tabPhotos.Location = New System.Drawing.Point(4, 22)
+        Me.tabPhotos.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tabPhotos.Location = New System.Drawing.Point(4, 29)
         Me.tabPhotos.Name = "tabPhotos"
         Me.tabPhotos.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.tabPhotos.Size = New System.Drawing.Size(915, 574)
+        Me.tabPhotos.Size = New System.Drawing.Size(915, 567)
         Me.tabPhotos.TabIndex = 5
         Me.tabPhotos.Text = "الصور"
         Me.tabPhotos.UseVisualStyleBackColor = True
+        '
+        'btnAddPhoto
+        '
+        Me.btnAddPhoto.BackColor = System.Drawing.Color.Blue
+        Me.btnAddPhoto.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.btnAddPhoto.ForeColor = System.Drawing.Color.White
+        Me.btnAddPhoto.Location = New System.Drawing.Point(761, 19)
+        Me.btnAddPhoto.Name = "btnAddPhoto"
+        Me.btnAddPhoto.Size = New System.Drawing.Size(112, 34)
+        Me.btnAddPhoto.TabIndex = 14
+        Me.btnAddPhoto.Text = "إضافة صورة"
+        Me.btnAddPhoto.UseVisualStyleBackColor = False
+        '
+        'flpPhotos
+        '
+        Me.flpPhotos.AutoScroll = True
+        Me.flpPhotos.Location = New System.Drawing.Point(14, 59)
+        Me.flpPhotos.Name = "flpPhotos"
+        Me.flpPhotos.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.flpPhotos.Size = New System.Drawing.Size(884, 499)
+        Me.flpPhotos.TabIndex = 5
+        Me.flpPhotos.WrapContents = False
         '
         'tabNotes
         '
@@ -127,10 +162,10 @@ Partial Class FrmPatientProfile
         Me.tabNotes.Controls.Add(Me.btnAddNote)
         Me.tabNotes.Controls.Add(Me.Label6)
         Me.tabNotes.Controls.Add(Me.txtDoctorNote)
-        Me.tabNotes.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.tabNotes.Location = New System.Drawing.Point(4, 22)
+        Me.tabNotes.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tabNotes.Location = New System.Drawing.Point(4, 29)
         Me.tabNotes.Name = "tabNotes"
-        Me.tabNotes.Size = New System.Drawing.Size(915, 574)
+        Me.tabNotes.Size = New System.Drawing.Size(915, 569)
         Me.tabNotes.TabIndex = 4
         Me.tabNotes.Text = "ملاحظات الطبيب"
         Me.tabNotes.UseVisualStyleBackColor = True
@@ -182,10 +217,10 @@ Partial Class FrmPatientProfile
         Me.tabPayments.Controls.Add(Me.btnAddPayment)
         Me.tabPayments.Controls.Add(Me.lblRemaining)
         Me.tabPayments.Controls.Add(Me.lblTotalPaid)
-        Me.tabPayments.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.tabPayments.Location = New System.Drawing.Point(4, 22)
+        Me.tabPayments.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tabPayments.Location = New System.Drawing.Point(4, 29)
         Me.tabPayments.Name = "tabPayments"
-        Me.tabPayments.Size = New System.Drawing.Size(915, 574)
+        Me.tabPayments.Size = New System.Drawing.Size(915, 567)
         Me.tabPayments.TabIndex = 3
         Me.tabPayments.Text = "الحسابات"
         Me.tabPayments.UseVisualStyleBackColor = True
@@ -237,10 +272,10 @@ Partial Class FrmPatientProfile
         Me.tabSessions.Controls.Add(Me.lblSessionsCount)
         Me.tabSessions.Controls.Add(Me.btnAddSession)
         Me.tabSessions.Controls.Add(Me.GroupBox1)
-        Me.tabSessions.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.tabSessions.Location = New System.Drawing.Point(4, 22)
+        Me.tabSessions.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tabSessions.Location = New System.Drawing.Point(4, 29)
         Me.tabSessions.Name = "tabSessions"
-        Me.tabSessions.Size = New System.Drawing.Size(915, 574)
+        Me.tabSessions.Size = New System.Drawing.Size(915, 569)
         Me.tabSessions.TabIndex = 2
         Me.tabSessions.Text = "الجلسات"
         Me.tabSessions.UseVisualStyleBackColor = True
@@ -305,11 +340,11 @@ Partial Class FrmPatientProfile
         Me.tabMedical.Controls.Add(Me.txtMedications)
         Me.tabMedical.Controls.Add(Me.txtConditions)
         Me.tabMedical.Controls.Add(Me.txtAllergies)
-        Me.tabMedical.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.tabMedical.Location = New System.Drawing.Point(4, 22)
+        Me.tabMedical.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tabMedical.Location = New System.Drawing.Point(4, 29)
         Me.tabMedical.Name = "tabMedical"
         Me.tabMedical.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabMedical.Size = New System.Drawing.Size(915, 574)
+        Me.tabMedical.Size = New System.Drawing.Size(915, 569)
         Me.tabMedical.TabIndex = 1
         Me.tabMedical.Text = "التاريخ المرضى"
         Me.tabMedical.UseVisualStyleBackColor = True
@@ -382,7 +417,7 @@ Partial Class FrmPatientProfile
         Me.cbSkinType.Items.AddRange(New Object() {"Type I", "Type II", "Type III", "Type IV", "Type V", "Type VI"})
         Me.cbSkinType.Location = New System.Drawing.Point(318, 530)
         Me.cbSkinType.Name = "cbSkinType"
-        Me.cbSkinType.Size = New System.Drawing.Size(121, 26)
+        Me.cbSkinType.Size = New System.Drawing.Size(121, 24)
         Me.cbSkinType.TabIndex = 4
         '
         'txtMedicalNotes
@@ -431,24 +466,27 @@ Partial Class FrmPatientProfile
         '
         'tabOverview
         '
-        Me.tabOverview.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.tabOverview.Location = New System.Drawing.Point(4, 22)
+        Me.tabOverview.BackColor = System.Drawing.Color.Transparent
+        Me.tabOverview.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tabOverview.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.tabOverview.Location = New System.Drawing.Point(4, 29)
         Me.tabOverview.Name = "tabOverview"
         Me.tabOverview.Padding = New System.Windows.Forms.Padding(3)
         Me.tabOverview.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.tabOverview.Size = New System.Drawing.Size(915, 574)
+        Me.tabOverview.Size = New System.Drawing.Size(915, 567)
         Me.tabOverview.TabIndex = 0
         Me.tabOverview.Text = "نظرة عامة"
-        Me.tabOverview.UseVisualStyleBackColor = True
         '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.tabOverview)
+        Me.TabControl1.Controls.Add(Me.tabTreatmentPlan)
         Me.TabControl1.Controls.Add(Me.tabMedical)
         Me.TabControl1.Controls.Add(Me.tabSessions)
         Me.TabControl1.Controls.Add(Me.tabPayments)
         Me.TabControl1.Controls.Add(Me.tabNotes)
         Me.TabControl1.Controls.Add(Me.tabPhotos)
+        Me.TabControl1.Font = New System.Drawing.Font("Segoe UI", 11.0!, System.Drawing.FontStyle.Bold)
         Me.TabControl1.Location = New System.Drawing.Point(12, 52)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -457,27 +495,101 @@ Partial Class FrmPatientProfile
         Me.TabControl1.Size = New System.Drawing.Size(923, 600)
         Me.TabControl1.TabIndex = 12
         '
-        'flpPhotos
+        'tabTreatmentPlan
         '
-        Me.flpPhotos.AutoScroll = True
-        Me.flpPhotos.Location = New System.Drawing.Point(14, 59)
-        Me.flpPhotos.Name = "flpPhotos"
-        Me.flpPhotos.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.flpPhotos.Size = New System.Drawing.Size(884, 499)
-        Me.flpPhotos.TabIndex = 5
-        Me.flpPhotos.WrapContents = False
+        Me.tabTreatmentPlan.Controls.Add(Me.prgTreatment)
+        Me.tabTreatmentPlan.Controls.Add(Me.lblProgress)
+        Me.tabTreatmentPlan.Controls.Add(Me.lblRemainingSessions)
+        Me.tabTreatmentPlan.Controls.Add(Me.lblCompleted)
+        Me.tabTreatmentPlan.Controls.Add(Me.dgvTreatmentPlans)
+        Me.tabTreatmentPlan.Controls.Add(Me.btnNewPlan)
+        Me.tabTreatmentPlan.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tabTreatmentPlan.Location = New System.Drawing.Point(4, 29)
+        Me.tabTreatmentPlan.Name = "tabTreatmentPlan"
+        Me.tabTreatmentPlan.Size = New System.Drawing.Size(915, 567)
+        Me.tabTreatmentPlan.TabIndex = 6
+        Me.tabTreatmentPlan.Text = "الخطة العلاجية"
+        Me.tabTreatmentPlan.UseVisualStyleBackColor = True
         '
-        'btnAddPhoto
+        'prgTreatment
         '
-        Me.btnAddPhoto.BackColor = System.Drawing.Color.Blue
-        Me.btnAddPhoto.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.btnAddPhoto.ForeColor = System.Drawing.Color.White
-        Me.btnAddPhoto.Location = New System.Drawing.Point(761, 19)
-        Me.btnAddPhoto.Name = "btnAddPhoto"
-        Me.btnAddPhoto.Size = New System.Drawing.Size(112, 34)
-        Me.btnAddPhoto.TabIndex = 14
-        Me.btnAddPhoto.Text = "إضافة صورة"
-        Me.btnAddPhoto.UseVisualStyleBackColor = False
+        Me.prgTreatment.Location = New System.Drawing.Point(12, 19)
+        Me.prgTreatment.Name = "prgTreatment"
+        Me.prgTreatment.Size = New System.Drawing.Size(188, 23)
+        Me.prgTreatment.TabIndex = 5
+        '
+        'lblProgress
+        '
+        Me.lblProgress.AutoSize = True
+        Me.lblProgress.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.lblProgress.Location = New System.Drawing.Point(203, 43)
+        Me.lblProgress.Name = "lblProgress"
+        Me.lblProgress.Size = New System.Drawing.Size(70, 19)
+        Me.lblProgress.TabIndex = 4
+        Me.lblProgress.Text = "Progress"
+        '
+        'lblRemainingSessions
+        '
+        Me.lblRemainingSessions.AutoSize = True
+        Me.lblRemainingSessions.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.lblRemainingSessions.Location = New System.Drawing.Point(400, 43)
+        Me.lblRemainingSessions.Name = "lblRemainingSessions"
+        Me.lblRemainingSessions.Size = New System.Drawing.Size(84, 19)
+        Me.lblRemainingSessions.TabIndex = 3
+        Me.lblRemainingSessions.Text = "Remaining"
+        '
+        'lblCompleted
+        '
+        Me.lblCompleted.AutoSize = True
+        Me.lblCompleted.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.lblCompleted.Location = New System.Drawing.Point(571, 43)
+        Me.lblCompleted.Name = "lblCompleted"
+        Me.lblCompleted.Size = New System.Drawing.Size(85, 19)
+        Me.lblCompleted.TabIndex = 2
+        Me.lblCompleted.Text = "Completed"
+        '
+        'dgvTreatmentPlans
+        '
+        Me.dgvTreatmentPlans.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvTreatmentPlans.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvTreatmentPlans.Location = New System.Drawing.Point(12, 71)
+        Me.dgvTreatmentPlans.Name = "dgvTreatmentPlans"
+        Me.dgvTreatmentPlans.ReadOnly = True
+        Me.dgvTreatmentPlans.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.dgvTreatmentPlans.RowHeadersVisible = False
+        Me.dgvTreatmentPlans.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvTreatmentPlans.Size = New System.Drawing.Size(874, 450)
+        Me.dgvTreatmentPlans.TabIndex = 0
+        '
+        'btnNewPlan
+        '
+        Me.btnNewPlan.BackColor = System.Drawing.Color.Blue
+        Me.btnNewPlan.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.btnNewPlan.ForeColor = System.Drawing.Color.White
+        Me.btnNewPlan.Location = New System.Drawing.Point(739, 19)
+        Me.btnNewPlan.Name = "btnNewPlan"
+        Me.btnNewPlan.Size = New System.Drawing.Size(147, 34)
+        Me.btnNewPlan.TabIndex = 1
+        Me.btnNewPlan.Text = "خطة علاج جديدة"
+        Me.btnNewPlan.UseVisualStyleBackColor = False
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.Label12.Location = New System.Drawing.Point(624, 17)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(86, 19)
+        Me.Label12.TabIndex = 57
+        Me.Label12.Text = "اختار الخطة"
+        '
+        'cbPhotoPlan
+        '
+        Me.cbPhotoPlan.FormattingEnabled = True
+        Me.cbPhotoPlan.Location = New System.Drawing.Point(312, 19)
+        Me.cbPhotoPlan.Name = "cbPhotoPlan"
+        Me.cbPhotoPlan.Size = New System.Drawing.Size(300, 24)
+        Me.cbPhotoPlan.TabIndex = 56
         '
         'FrmPatientProfile
         '
@@ -493,6 +605,7 @@ Partial Class FrmPatientProfile
         Me.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.Text = "FrmPatientProfile"
         Me.tabPhotos.ResumeLayout(False)
+        Me.tabPhotos.PerformLayout()
         Me.tabNotes.ResumeLayout(False)
         Me.tabNotes.PerformLayout()
         Me.tabPayments.ResumeLayout(False)
@@ -504,6 +617,9 @@ Partial Class FrmPatientProfile
         Me.tabMedical.ResumeLayout(False)
         Me.tabMedical.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
+        Me.tabTreatmentPlan.ResumeLayout(False)
+        Me.tabTreatmentPlan.PerformLayout()
+        CType(Me.dgvTreatmentPlans, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -545,4 +661,13 @@ Partial Class FrmPatientProfile
     Friend WithEvents flpNotes As FlowLayoutPanel
     Friend WithEvents flpPhotos As FlowLayoutPanel
     Friend WithEvents btnAddPhoto As Button
+    Friend WithEvents tabTreatmentPlan As TabPage
+    Friend WithEvents dgvTreatmentPlans As DataGridView
+    Friend WithEvents btnNewPlan As Button
+    Friend WithEvents lblProgress As Label
+    Friend WithEvents lblRemainingSessions As Label
+    Friend WithEvents lblCompleted As Label
+    Friend WithEvents prgTreatment As ProgressBar
+    Friend WithEvents Label12 As Label
+    Friend WithEvents cbPhotoPlan As ComboBox
 End Class

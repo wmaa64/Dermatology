@@ -15,6 +15,7 @@ Public Class FrmAddSession
         cbDevice.Items.Add("GentleLase")
         cbDevice.Items.Add("Soprano")
 
+        LoadTreatmentPlans()
 
     End Sub
 
@@ -22,7 +23,7 @@ Public Class FrmAddSession
         Try
 
             Dim cmd As New SqlCommand("INSERT INTO LaserSessions
-                (
+                (   PlanID,
                     PatientID,
                     SessionDate,
                     Area,
@@ -32,7 +33,7 @@ Public Class FrmAddSession
                 )
 
                 VALUES
-                (
+                (   @PlanID,
                     @PatientID,
                     @SessionDate,
                     @Area,
@@ -40,6 +41,8 @@ Public Class FrmAddSession
                     @SessionPrice,
                     @Notes
                 )", con)
+
+            cmd.Parameters.AddWithValue("@PlanID", cbTreatmentPlan.SelectedValue)
 
             cmd.Parameters.AddWithValue("@PatientID", PatientID)
 
@@ -62,6 +65,37 @@ Public Class FrmAddSession
         Catch ex As Exception
 
             con.Close()
+
+            MessageBox.Show(ex.Message)
+
+        End Try
+
+    End Sub
+
+    Private Sub LoadTreatmentPlans()
+
+        Try
+
+            Dim cmd As New SqlCommand("SELECT  PlanID, PlanName FROM TreatmentPlans WHERE PatientID=@PatientID
+
+                                     AND Status='Active'
+
+                                     ORDER BY StartDate DESC")
+
+            cmd.Parameters.AddWithValue(
+            "@PatientID",
+            PatientID)
+
+            Dim dt As DataTable =
+                DatabaseHelper.GetDataTable(cmd)
+
+            cbTreatmentPlan.DataSource = dt
+
+            cbTreatmentPlan.DisplayMember = "PlanName"
+
+            cbTreatmentPlan.ValueMember = "PlanID"
+
+        Catch ex As Exception
 
             MessageBox.Show(ex.Message)
 
