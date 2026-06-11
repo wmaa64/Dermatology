@@ -22,13 +22,15 @@ Partial Class UC_Dashboard
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend4 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.pnlCharts = New System.Windows.Forms.FlowLayoutPanel()
+        Me.chartSessions = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.chartRevenue = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.dgvRecentSessions = New System.Windows.Forms.DataGridView()
         Me.flpCards = New System.Windows.Forms.FlowLayoutPanel()
         Me.cardAppointments = New System.Windows.Forms.Panel()
@@ -41,19 +43,17 @@ Partial Class UC_Dashboard
         Me.lblSessionsToday = New System.Windows.Forms.Label()
         Me.lblSessionsTitle = New System.Windows.Forms.Label()
         Me.cardPatients = New System.Windows.Forms.Panel()
-        Me.lblPatientsCount = New System.Windows.Forms.Label()
-        Me.lblPatientsTitle = New System.Windows.Forms.Label()
-        Me.chartSessions = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.chartRevenue = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.lblCustomersCount = New System.Windows.Forms.Label()
+        Me.lblCustomersTitle = New System.Windows.Forms.Label()
         Me.pnlCharts.SuspendLayout()
+        CType(Me.chartSessions, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.chartRevenue, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvRecentSessions, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.flpCards.SuspendLayout()
         Me.cardAppointments.SuspendLayout()
         Me.cardRevenue.SuspendLayout()
         Me.cardSessions.SuspendLayout()
         Me.cardPatients.SuspendLayout()
-        CType(Me.chartSessions, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.chartRevenue, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'pnlCharts
@@ -68,6 +68,38 @@ Partial Class UC_Dashboard
         Me.pnlCharts.Size = New System.Drawing.Size(960, 200)
         Me.pnlCharts.TabIndex = 2
         Me.pnlCharts.WrapContents = False
+        '
+        'chartSessions
+        '
+        ChartArea3.Name = "ChartArea1"
+        Me.chartSessions.ChartAreas.Add(ChartArea3)
+        Legend3.Name = "Legend1"
+        Me.chartSessions.Legends.Add(Legend3)
+        Me.chartSessions.Location = New System.Drawing.Point(3, 3)
+        Me.chartSessions.Name = "chartSessions"
+        Series3.ChartArea = "ChartArea1"
+        Series3.Legend = "Legend1"
+        Series3.Name = "Series1"
+        Me.chartSessions.Series.Add(Series3)
+        Me.chartSessions.Size = New System.Drawing.Size(466, 184)
+        Me.chartSessions.TabIndex = 0
+        Me.chartSessions.Text = "Chart1"
+        '
+        'chartRevenue
+        '
+        ChartArea4.Name = "ChartArea1"
+        Me.chartRevenue.ChartAreas.Add(ChartArea4)
+        Legend4.Name = "Legend1"
+        Me.chartRevenue.Legends.Add(Legend4)
+        Me.chartRevenue.Location = New System.Drawing.Point(475, 3)
+        Me.chartRevenue.Name = "chartRevenue"
+        Series4.ChartArea = "ChartArea1"
+        Series4.Legend = "Legend1"
+        Series4.Name = "Series1"
+        Me.chartRevenue.Series.Add(Series4)
+        Me.chartRevenue.Size = New System.Drawing.Size(465, 184)
+        Me.chartRevenue.TabIndex = 1
+        Me.chartRevenue.Text = "Chart1"
         '
         'dgvRecentSessions
         '
@@ -123,9 +155,9 @@ Partial Class UC_Dashboard
         Me.lblAppointmentsTitle.ForeColor = System.Drawing.Color.Red
         Me.lblAppointmentsTitle.Location = New System.Drawing.Point(20, 15)
         Me.lblAppointmentsTitle.Name = "lblAppointmentsTitle"
-        Me.lblAppointmentsTitle.Size = New System.Drawing.Size(118, 29)
+        Me.lblAppointmentsTitle.Size = New System.Drawing.Size(149, 29)
         Me.lblAppointmentsTitle.TabIndex = 2
-        Me.lblAppointmentsTitle.Text = "الحجوزات"
+        Me.lblAppointmentsTitle.Text = "أصناف رواكد"
         '
         'cardRevenue
         '
@@ -189,74 +221,42 @@ Partial Class UC_Dashboard
         Me.lblSessionsTitle.ForeColor = System.Drawing.Color.Lime
         Me.lblSessionsTitle.Location = New System.Drawing.Point(20, 15)
         Me.lblSessionsTitle.Name = "lblSessionsTitle"
-        Me.lblSessionsTitle.Size = New System.Drawing.Size(158, 29)
+        Me.lblSessionsTitle.Size = New System.Drawing.Size(193, 29)
         Me.lblSessionsTitle.TabIndex = 2
-        Me.lblSessionsTitle.Text = "جلسات اليوم"
+        Me.lblSessionsTitle.Text = "فواتير البيع اليوم"
         '
         'cardPatients
         '
         Me.cardPatients.BackColor = System.Drawing.Color.White
         Me.cardPatients.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.cardPatients.Controls.Add(Me.lblPatientsCount)
-        Me.cardPatients.Controls.Add(Me.lblPatientsTitle)
+        Me.cardPatients.Controls.Add(Me.lblCustomersCount)
+        Me.cardPatients.Controls.Add(Me.lblCustomersTitle)
         Me.cardPatients.Location = New System.Drawing.Point(711, 3)
         Me.cardPatients.Name = "cardPatients"
         Me.cardPatients.Size = New System.Drawing.Size(230, 120)
         Me.cardPatients.TabIndex = 0
         '
-        'lblPatientsCount
+        'lblCustomersCount
         '
-        Me.lblPatientsCount.AutoSize = True
-        Me.lblPatientsCount.Font = New System.Drawing.Font("Tahoma", 24.0!)
-        Me.lblPatientsCount.ForeColor = System.Drawing.Color.Blue
-        Me.lblPatientsCount.Location = New System.Drawing.Point(20, 50)
-        Me.lblPatientsCount.Name = "lblPatientsCount"
-        Me.lblPatientsCount.Size = New System.Drawing.Size(35, 39)
-        Me.lblPatientsCount.TabIndex = 1
-        Me.lblPatientsCount.Text = "0"
+        Me.lblCustomersCount.AutoSize = True
+        Me.lblCustomersCount.Font = New System.Drawing.Font("Tahoma", 24.0!)
+        Me.lblCustomersCount.ForeColor = System.Drawing.Color.Blue
+        Me.lblCustomersCount.Location = New System.Drawing.Point(20, 50)
+        Me.lblCustomersCount.Name = "lblCustomersCount"
+        Me.lblCustomersCount.Size = New System.Drawing.Size(35, 39)
+        Me.lblCustomersCount.TabIndex = 1
+        Me.lblCustomersCount.Text = "0"
         '
-        'lblPatientsTitle
+        'lblCustomersTitle
         '
-        Me.lblPatientsTitle.AutoSize = True
-        Me.lblPatientsTitle.Font = New System.Drawing.Font("Tahoma", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.lblPatientsTitle.ForeColor = System.Drawing.Color.Blue
-        Me.lblPatientsTitle.Location = New System.Drawing.Point(20, 15)
-        Me.lblPatientsTitle.Name = "lblPatientsTitle"
-        Me.lblPatientsTitle.Size = New System.Drawing.Size(154, 29)
-        Me.lblPatientsTitle.TabIndex = 0
-        Me.lblPatientsTitle.Text = "عدد المرضى"
-        '
-        'chartSessions
-        '
-        ChartArea1.Name = "ChartArea1"
-        Me.chartSessions.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.chartSessions.Legends.Add(Legend1)
-        Me.chartSessions.Location = New System.Drawing.Point(3, 3)
-        Me.chartSessions.Name = "chartSessions"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.chartSessions.Series.Add(Series1)
-        Me.chartSessions.Size = New System.Drawing.Size(466, 184)
-        Me.chartSessions.TabIndex = 0
-        Me.chartSessions.Text = "Chart1"
-        '
-        'chartRevenue
-        '
-        ChartArea2.Name = "ChartArea1"
-        Me.chartRevenue.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.chartRevenue.Legends.Add(Legend2)
-        Me.chartRevenue.Location = New System.Drawing.Point(475, 3)
-        Me.chartRevenue.Name = "chartRevenue"
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.chartRevenue.Series.Add(Series2)
-        Me.chartRevenue.Size = New System.Drawing.Size(465, 184)
-        Me.chartRevenue.TabIndex = 1
-        Me.chartRevenue.Text = "Chart1"
+        Me.lblCustomersTitle.AutoSize = True
+        Me.lblCustomersTitle.Font = New System.Drawing.Font("Tahoma", 18.0!, System.Drawing.FontStyle.Bold)
+        Me.lblCustomersTitle.ForeColor = System.Drawing.Color.Blue
+        Me.lblCustomersTitle.Location = New System.Drawing.Point(20, 15)
+        Me.lblCustomersTitle.Name = "lblCustomersTitle"
+        Me.lblCustomersTitle.Size = New System.Drawing.Size(136, 29)
+        Me.lblCustomersTitle.TabIndex = 0
+        Me.lblCustomersTitle.Text = "عدد العملاء"
         '
         'UC_Dashboard
         '
@@ -268,6 +268,8 @@ Partial Class UC_Dashboard
         Me.Name = "UC_Dashboard"
         Me.Size = New System.Drawing.Size(953, 555)
         Me.pnlCharts.ResumeLayout(False)
+        CType(Me.chartSessions, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.chartRevenue, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvRecentSessions, System.ComponentModel.ISupportInitialize).EndInit()
         Me.flpCards.ResumeLayout(False)
         Me.cardAppointments.ResumeLayout(False)
@@ -278,8 +280,6 @@ Partial Class UC_Dashboard
         Me.cardSessions.PerformLayout()
         Me.cardPatients.ResumeLayout(False)
         Me.cardPatients.PerformLayout()
-        CType(Me.chartSessions, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.chartRevenue, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -296,8 +296,8 @@ Partial Class UC_Dashboard
     Friend WithEvents lblSessionsToday As Label
     Friend WithEvents lblSessionsTitle As Label
     Friend WithEvents cardPatients As Panel
-    Friend WithEvents lblPatientsCount As Label
-    Friend WithEvents lblPatientsTitle As Label
+    Friend WithEvents lblCustomersCount As Label
+    Friend WithEvents lblCustomersTitle As Label
     Friend WithEvents chartSessions As DataVisualization.Charting.Chart
     Friend WithEvents chartRevenue As DataVisualization.Charting.Chart
 End Class

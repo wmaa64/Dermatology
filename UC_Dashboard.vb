@@ -4,15 +4,11 @@ Imports System.Windows.Forms.DataVisualization.Charting
 
 Public Class UC_Dashboard
 
-    Private Sub LoadPatientsCount()
+    Private Sub LoadCustomersCount()
 
-        Dim cmd As New SqlCommand("SELECT COUNT(*) FROM Patients", con)
+        Dim cmd As New SqlCommand("SELECT COUNT(*) FROM Customers")
 
-        con.Open()
-
-        lblPatientsCount.Text = cmd.ExecuteScalar().ToString()
-
-        con.Close()
+        lblCustomersCount.Text = DatabaseHelper.ExecuteScalar(cmd)
 
     End Sub
 
@@ -60,17 +56,18 @@ Public Class UC_Dashboard
     Private Sub UC_Dashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'flpCards.BringToFront()
         'pnlCharts.Top = flpCards.Bottom + 10
-        LoadSessionsChart()
 
-        LoadRevenueChart()
+        'LoadSessionsChart()
 
-        LoadPatientsCount()
+        'LoadRevenueChart()
 
-        LoadTodaySessions()
+        LoadCustomersCount()
 
-        LoadTodayRevenue()
+        'LoadTodaySessions()
 
-        LoadRecentSessions()
+        'LoadTodayRevenue()
+
+        'LoadRecentSessions()
 
     End Sub
 
@@ -163,6 +160,10 @@ Public Class UC_Dashboard
             MessageBox.Show(ex.Message)
 
         End Try
+
+    End Sub
+
+    Private Sub flpCards_Paint(sender As Object, e As PaintEventArgs) Handles flpCards.Paint
 
     End Sub
 End Class
