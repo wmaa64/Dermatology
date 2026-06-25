@@ -24,8 +24,11 @@
         LoadControl(New UC_ProductUnits)
     End Sub
 
-    Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
-        lblTitle.Text = "الاعدادات"
+    Private Sub btnSaleInvoices_Click(sender As Object, e As EventArgs) Handles btnSaleInvoices.Click
+        lblTitle.Text = "فواتير البيع"
+
+        LoadControl(New UC_SalesInvoices)
+
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load

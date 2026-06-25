@@ -12,16 +12,12 @@ Public Class UC_Dashboard
 
     End Sub
 
-    Private Sub LoadTodaySessions()
+    Private Sub LoadTodaySalesInvoices()
 
-        Dim cmd As New SqlCommand("SELECT COUNT(*)  FROM LaserSessions
-                                    WHERE CAST(SessionDate AS DATE)=CAST(GETDATE() AS DATE)", con)
+        Dim cmd As New SqlCommand("SELECT COUNT(*)  FROM SalesInvoices
+                                    WHERE CAST(InvoiceDate AS DATE)=CAST(GETDATE() AS DATE)")
 
-        con.Open()
-
-        lblSessionsToday.Text = cmd.ExecuteScalar().ToString()
-
-        con.Close()
+        lblSalesInvoicesToday.Text = DatabaseHelper.ExecuteScalar(cmd)
 
     End Sub
 
@@ -57,13 +53,11 @@ Public Class UC_Dashboard
         'flpCards.BringToFront()
         'pnlCharts.Top = flpCards.Bottom + 10
 
-        'LoadSessionsChart()
-
         'LoadRevenueChart()
 
         LoadCustomersCount()
 
-        'LoadTodaySessions()
+        LoadTodaySalesInvoices()
 
         'LoadTodayRevenue()
 

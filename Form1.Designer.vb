@@ -24,7 +24,7 @@ Partial Class FormMain
     Private Sub InitializeComponent()
         Me.pnlSidebar = New System.Windows.Forms.Panel()
         Me.lblClinic = New System.Windows.Forms.Label()
-        Me.btnSettings = New System.Windows.Forms.Button()
+        Me.btnSaleInvoices = New System.Windows.Forms.Button()
         Me.btnProductUnits = New System.Windows.Forms.Button()
         Me.btnUnits = New System.Windows.Forms.Button()
         Me.btnBrands = New System.Windows.Forms.Button()
@@ -46,7 +46,7 @@ Partial Class FormMain
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pnlSidebar.BackColor = System.Drawing.SystemColors.Highlight
         Me.pnlSidebar.Controls.Add(Me.lblClinic)
-        Me.pnlSidebar.Controls.Add(Me.btnSettings)
+        Me.pnlSidebar.Controls.Add(Me.btnSaleInvoices)
         Me.pnlSidebar.Controls.Add(Me.btnProductUnits)
         Me.pnlSidebar.Controls.Add(Me.btnUnits)
         Me.pnlSidebar.Controls.Add(Me.btnBrands)
@@ -70,17 +70,17 @@ Partial Class FormMain
         Me.lblClinic.TabIndex = 8
         Me.lblClinic.Text = "FemtoTrade"
         '
-        'btnSettings
+        'btnSaleInvoices
         '
-        Me.btnSettings.FlatAppearance.BorderSize = 0
-        Me.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSettings.ForeColor = System.Drawing.Color.White
-        Me.btnSettings.Location = New System.Drawing.Point(0, 332)
-        Me.btnSettings.Name = "btnSettings"
-        Me.btnSettings.Size = New System.Drawing.Size(220, 50)
-        Me.btnSettings.TabIndex = 7
-        Me.btnSettings.Text = "الاعدادات"
-        Me.btnSettings.UseVisualStyleBackColor = True
+        Me.btnSaleInvoices.FlatAppearance.BorderSize = 0
+        Me.btnSaleInvoices.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSaleInvoices.ForeColor = System.Drawing.Color.White
+        Me.btnSaleInvoices.Location = New System.Drawing.Point(0, 332)
+        Me.btnSaleInvoices.Name = "btnSaleInvoices"
+        Me.btnSaleInvoices.Size = New System.Drawing.Size(220, 50)
+        Me.btnSaleInvoices.TabIndex = 7
+        Me.btnSaleInvoices.Text = "فواتير البيع"
+        Me.btnSaleInvoices.UseVisualStyleBackColor = True
         '
         'btnProductUnits
         '
@@ -233,7 +233,7 @@ Partial Class FormMain
     Friend WithEvents pnlHeader As Panel
     Friend WithEvents pnlMain As Panel
     Friend WithEvents btnDashboard As Button
-    Friend WithEvents btnSettings As Button
+    Friend WithEvents btnSaleInvoices As Button
     Friend WithEvents btnProductUnits As Button
     Friend WithEvents btnBrands As Button
     Friend WithEvents btnUnits As Button

@@ -21,3 +21,6 @@ F:\vbprojects\Femtotrade\obj\Debug\Femtotrade.FrmAddProductUnit.resources
 F:\vbprojects\Femtotrade\obj\Debug\Femtotrade.UC_ProductUnits.resources
 F:\vbprojects\Femtotrade\obj\Debug\Femtotrade.UC_Products.resources
 F:\vbprojects\Femtotrade\obj\Debug\Femtotrade.FrmAddProduct.resources
+F:\vbprojects\Femtotrade\obj\Debug\Femtotrade.FrmAddSalesInvoice.resources
+F:\vbprojects\Femtotrade\obj\Debug\Femtotrade.FrmProductSearch.resources
+F:\vbprojects\Femtotrade\obj\Debug\Femtotrade.UC_SalesInvoices.resources

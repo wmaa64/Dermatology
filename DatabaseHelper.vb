@@ -54,4 +54,10 @@ Public Class DatabaseHelper
 
     End Function
 
+    Public Shared Function GetConnection() As SqlConnection
+
+        Return New SqlConnection(ConnectionString)
+
+    End Function
+
 End Class
