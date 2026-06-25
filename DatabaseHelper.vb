@@ -4,7 +4,7 @@ Imports System.Data
 Public Class DatabaseHelper
 
     Public Shared ConnectionString As String =
-        "Server=.\SQLEXPRESS;Database=ClinicDB;Trusted_Connection=True;"
+        "Server=.\SQLEXPRESS;Database=FemtotradeDB;Trusted_Connection=True;"
 
     Public Shared Function GetDataTable(cmd As SqlCommand) As DataTable
 
@@ -51,6 +51,12 @@ Public Class DatabaseHelper
             Return cmd.ExecuteScalar()
 
         End Using
+
+    End Function
+
+    Public Shared Function GetConnection() As SqlConnection
+
+        Return New SqlConnection(ConnectionString)
 
     End Function
 

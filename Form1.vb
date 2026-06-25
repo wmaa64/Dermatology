@@ -1,28 +1,34 @@
 ﻿Public Class FormMain
-    Private Sub btnPatients_Click(sender As Object, e As EventArgs) Handles btnPatients.Click
-        lblTitle.Text = "إدارة المرضى"
-        LoadControl(New UC_Patients)
+    Private Sub btnCustomers_Click(sender As Object, e As EventArgs) Handles btnCustomers.Click
+        lblTitle.Text = "إدارة العملاء"
+        LoadControl(New UC_Customers)
     End Sub
 
-    Private Sub btnSessions_Click(sender As Object, e As EventArgs) Handles btnSessions.Click
-        lblTitle.Text = "جلسات الليزر"
+    Private Sub btnProducts_Click(sender As Object, e As EventArgs) Handles btnProducts.Click
+        lblTitle.Text = "إدارة الأصناف"
+        LoadControl(New UC_Products)
     End Sub
 
-    Private Sub btnAccounts_Click(sender As Object, e As EventArgs) Handles btnAccounts.Click
-        lblTitle.Text = "الحسابات"
+    Private Sub btnBrands_Click(sender As Object, e As EventArgs) Handles btnBrands.Click
+        lblTitle.Text = "الموردين"
+        LoadControl(New UC_Brands)
     End Sub
 
-    Private Sub Appointments_Click(sender As Object, e As EventArgs) Handles btnAppointments.Click
-        lblTitle.Text = "الحجوزات"
-        LoadControl(New UC_Appointments)
+    Private Sub btnUnits_Click(sender As Object, e As EventArgs) Handles btnUnits.Click
+        lblTitle.Text = "الوحدات"
+        LoadControl(New UC_Units)
     End Sub
 
-    Private Sub btnReports_Click(sender As Object, e As EventArgs) Handles btnReports.Click
-        lblTitle.Text = "التقارير"
+    Private Sub btnProductUnits_Click(sender As Object, e As EventArgs) Handles btnProductUnits.Click
+        lblTitle.Text = "الوحدات لصنف"
+        LoadControl(New UC_ProductUnits)
     End Sub
 
-    Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
-        lblTitle.Text = "الاعدادات"
+    Private Sub btnSaleInvoices_Click(sender As Object, e As EventArgs) Handles btnSaleInvoices.Click
+        lblTitle.Text = "فواتير البيع"
+
+        LoadControl(New UC_SalesInvoices)
+
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load

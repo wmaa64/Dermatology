@@ -24,12 +24,12 @@ Partial Class FormMain
     Private Sub InitializeComponent()
         Me.pnlSidebar = New System.Windows.Forms.Panel()
         Me.lblClinic = New System.Windows.Forms.Label()
-        Me.btnSettings = New System.Windows.Forms.Button()
-        Me.btnReports = New System.Windows.Forms.Button()
-        Me.btnAppointments = New System.Windows.Forms.Button()
-        Me.btnAccounts = New System.Windows.Forms.Button()
-        Me.btnSessions = New System.Windows.Forms.Button()
-        Me.btnPatients = New System.Windows.Forms.Button()
+        Me.btnSaleInvoices = New System.Windows.Forms.Button()
+        Me.btnProductUnits = New System.Windows.Forms.Button()
+        Me.btnUnits = New System.Windows.Forms.Button()
+        Me.btnBrands = New System.Windows.Forms.Button()
+        Me.btnProducts = New System.Windows.Forms.Button()
+        Me.btnCustomers = New System.Windows.Forms.Button()
         Me.btnDashboard = New System.Windows.Forms.Button()
         Me.pnlHeader = New System.Windows.Forms.Panel()
         Me.lblTitle = New System.Windows.Forms.Label()
@@ -46,12 +46,12 @@ Partial Class FormMain
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pnlSidebar.BackColor = System.Drawing.SystemColors.Highlight
         Me.pnlSidebar.Controls.Add(Me.lblClinic)
-        Me.pnlSidebar.Controls.Add(Me.btnSettings)
-        Me.pnlSidebar.Controls.Add(Me.btnReports)
-        Me.pnlSidebar.Controls.Add(Me.btnAppointments)
-        Me.pnlSidebar.Controls.Add(Me.btnAccounts)
-        Me.pnlSidebar.Controls.Add(Me.btnSessions)
-        Me.pnlSidebar.Controls.Add(Me.btnPatients)
+        Me.pnlSidebar.Controls.Add(Me.btnSaleInvoices)
+        Me.pnlSidebar.Controls.Add(Me.btnProductUnits)
+        Me.pnlSidebar.Controls.Add(Me.btnUnits)
+        Me.pnlSidebar.Controls.Add(Me.btnBrands)
+        Me.pnlSidebar.Controls.Add(Me.btnProducts)
+        Me.pnlSidebar.Controls.Add(Me.btnCustomers)
         Me.pnlSidebar.Controls.Add(Me.btnDashboard)
         Me.pnlSidebar.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.pnlSidebar.Location = New System.Drawing.Point(1146, 0)
@@ -64,83 +64,83 @@ Partial Class FormMain
         Me.lblClinic.AutoSize = True
         Me.lblClinic.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblClinic.ForeColor = System.Drawing.Color.White
-        Me.lblClinic.Location = New System.Drawing.Point(53, 3)
+        Me.lblClinic.Location = New System.Drawing.Point(46, 9)
         Me.lblClinic.Name = "lblClinic"
-        Me.lblClinic.Size = New System.Drawing.Size(125, 30)
+        Me.lblClinic.Size = New System.Drawing.Size(128, 30)
         Me.lblClinic.TabIndex = 8
-        Me.lblClinic.Text = "عيادة الجلدية"
+        Me.lblClinic.Text = "FemtoTrade"
         '
-        'btnSettings
+        'btnSaleInvoices
         '
-        Me.btnSettings.FlatAppearance.BorderSize = 0
-        Me.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSettings.ForeColor = System.Drawing.Color.White
-        Me.btnSettings.Location = New System.Drawing.Point(0, 332)
-        Me.btnSettings.Name = "btnSettings"
-        Me.btnSettings.Size = New System.Drawing.Size(220, 50)
-        Me.btnSettings.TabIndex = 7
-        Me.btnSettings.Text = "الاعدادات"
-        Me.btnSettings.UseVisualStyleBackColor = True
+        Me.btnSaleInvoices.FlatAppearance.BorderSize = 0
+        Me.btnSaleInvoices.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSaleInvoices.ForeColor = System.Drawing.Color.White
+        Me.btnSaleInvoices.Location = New System.Drawing.Point(0, 332)
+        Me.btnSaleInvoices.Name = "btnSaleInvoices"
+        Me.btnSaleInvoices.Size = New System.Drawing.Size(220, 50)
+        Me.btnSaleInvoices.TabIndex = 7
+        Me.btnSaleInvoices.Text = "فواتير البيع"
+        Me.btnSaleInvoices.UseVisualStyleBackColor = True
         '
-        'btnReports
+        'btnProductUnits
         '
-        Me.btnReports.FlatAppearance.BorderSize = 0
-        Me.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnReports.ForeColor = System.Drawing.Color.White
-        Me.btnReports.Location = New System.Drawing.Point(0, 282)
-        Me.btnReports.Name = "btnReports"
-        Me.btnReports.Size = New System.Drawing.Size(220, 50)
-        Me.btnReports.TabIndex = 6
-        Me.btnReports.Text = "التقارير"
-        Me.btnReports.UseVisualStyleBackColor = True
+        Me.btnProductUnits.FlatAppearance.BorderSize = 0
+        Me.btnProductUnits.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnProductUnits.ForeColor = System.Drawing.Color.White
+        Me.btnProductUnits.Location = New System.Drawing.Point(0, 282)
+        Me.btnProductUnits.Name = "btnProductUnits"
+        Me.btnProductUnits.Size = New System.Drawing.Size(220, 50)
+        Me.btnProductUnits.TabIndex = 6
+        Me.btnProductUnits.Text = "ربط الوحدات بالصنف"
+        Me.btnProductUnits.UseVisualStyleBackColor = True
         '
-        'btnAppointments
+        'btnUnits
         '
-        Me.btnAppointments.FlatAppearance.BorderSize = 0
-        Me.btnAppointments.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAppointments.ForeColor = System.Drawing.Color.White
-        Me.btnAppointments.Location = New System.Drawing.Point(0, 237)
-        Me.btnAppointments.Name = "btnAppointments"
-        Me.btnAppointments.Size = New System.Drawing.Size(220, 50)
-        Me.btnAppointments.TabIndex = 5
-        Me.btnAppointments.Text = "الحجوزات"
-        Me.btnAppointments.UseVisualStyleBackColor = True
+        Me.btnUnits.FlatAppearance.BorderSize = 0
+        Me.btnUnits.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnUnits.ForeColor = System.Drawing.Color.White
+        Me.btnUnits.Location = New System.Drawing.Point(0, 237)
+        Me.btnUnits.Name = "btnUnits"
+        Me.btnUnits.Size = New System.Drawing.Size(220, 50)
+        Me.btnUnits.TabIndex = 5
+        Me.btnUnits.Text = "الوحدات"
+        Me.btnUnits.UseVisualStyleBackColor = True
         '
-        'btnAccounts
+        'btnBrands
         '
-        Me.btnAccounts.FlatAppearance.BorderSize = 0
-        Me.btnAccounts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAccounts.ForeColor = System.Drawing.Color.White
-        Me.btnAccounts.Location = New System.Drawing.Point(0, 191)
-        Me.btnAccounts.Name = "btnAccounts"
-        Me.btnAccounts.Size = New System.Drawing.Size(220, 50)
-        Me.btnAccounts.TabIndex = 4
-        Me.btnAccounts.Text = "الحسابات"
-        Me.btnAccounts.UseVisualStyleBackColor = True
+        Me.btnBrands.FlatAppearance.BorderSize = 0
+        Me.btnBrands.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnBrands.ForeColor = System.Drawing.Color.White
+        Me.btnBrands.Location = New System.Drawing.Point(0, 191)
+        Me.btnBrands.Name = "btnBrands"
+        Me.btnBrands.Size = New System.Drawing.Size(220, 50)
+        Me.btnBrands.TabIndex = 4
+        Me.btnBrands.Text = "الموردين"
+        Me.btnBrands.UseVisualStyleBackColor = True
         '
-        'btnSessions
+        'btnProducts
         '
-        Me.btnSessions.FlatAppearance.BorderSize = 0
-        Me.btnSessions.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSessions.ForeColor = System.Drawing.Color.White
-        Me.btnSessions.Location = New System.Drawing.Point(0, 145)
-        Me.btnSessions.Name = "btnSessions"
-        Me.btnSessions.Size = New System.Drawing.Size(220, 50)
-        Me.btnSessions.TabIndex = 3
-        Me.btnSessions.Text = "جلسات الليزر"
-        Me.btnSessions.UseVisualStyleBackColor = True
+        Me.btnProducts.FlatAppearance.BorderSize = 0
+        Me.btnProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnProducts.ForeColor = System.Drawing.Color.White
+        Me.btnProducts.Location = New System.Drawing.Point(0, 145)
+        Me.btnProducts.Name = "btnProducts"
+        Me.btnProducts.Size = New System.Drawing.Size(220, 50)
+        Me.btnProducts.TabIndex = 3
+        Me.btnProducts.Text = "الأصناف"
+        Me.btnProducts.UseVisualStyleBackColor = True
         '
-        'btnPatients
+        'btnCustomers
         '
-        Me.btnPatients.FlatAppearance.BorderSize = 0
-        Me.btnPatients.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnPatients.ForeColor = System.Drawing.Color.White
-        Me.btnPatients.Location = New System.Drawing.Point(0, 102)
-        Me.btnPatients.Name = "btnPatients"
-        Me.btnPatients.Size = New System.Drawing.Size(220, 50)
-        Me.btnPatients.TabIndex = 1
-        Me.btnPatients.Text = "المرضى"
-        Me.btnPatients.UseVisualStyleBackColor = True
+        Me.btnCustomers.FlatAppearance.BorderSize = 0
+        Me.btnCustomers.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCustomers.ForeColor = System.Drawing.Color.White
+        Me.btnCustomers.Location = New System.Drawing.Point(0, 102)
+        Me.btnCustomers.Name = "btnCustomers"
+        Me.btnCustomers.Size = New System.Drawing.Size(220, 50)
+        Me.btnCustomers.TabIndex = 1
+        Me.btnCustomers.Text = "العملاء"
+        Me.btnCustomers.UseVisualStyleBackColor = True
         '
         'btnDashboard
         '
@@ -233,12 +233,12 @@ Partial Class FormMain
     Friend WithEvents pnlHeader As Panel
     Friend WithEvents pnlMain As Panel
     Friend WithEvents btnDashboard As Button
-    Friend WithEvents btnSettings As Button
-    Friend WithEvents btnReports As Button
-    Friend WithEvents btnAccounts As Button
-    Friend WithEvents btnAppointments As Button
-    Friend WithEvents btnSessions As Button
-    Friend WithEvents btnPatients As Button
+    Friend WithEvents btnSaleInvoices As Button
+    Friend WithEvents btnProductUnits As Button
+    Friend WithEvents btnBrands As Button
+    Friend WithEvents btnUnits As Button
+    Friend WithEvents btnProducts As Button
+    Friend WithEvents btnCustomers As Button
     Friend WithEvents lblClinic As Label
     Friend WithEvents btnMinimize As Button
     Friend WithEvents btnClose As Button
