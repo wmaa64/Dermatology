@@ -27,6 +27,8 @@ Partial Class FrmPatientProfile
         Me.lblAge = New System.Windows.Forms.Label()
         Me.lblAddress = New System.Windows.Forms.Label()
         Me.tabPhotos = New System.Windows.Forms.TabPage()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.cbPhotoPlan = New System.Windows.Forms.ComboBox()
         Me.btnAddPhoto = New System.Windows.Forms.Button()
         Me.flpPhotos = New System.Windows.Forms.FlowLayoutPanel()
         Me.tabNotes = New System.Windows.Forms.TabPage()
@@ -65,8 +67,6 @@ Partial Class FrmPatientProfile
         Me.lblCompleted = New System.Windows.Forms.Label()
         Me.dgvTreatmentPlans = New System.Windows.Forms.DataGridView()
         Me.btnNewPlan = New System.Windows.Forms.Button()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.cbPhotoPlan = New System.Windows.Forms.ComboBox()
         Me.tabPhotos.SuspendLayout()
         Me.tabNotes.SuspendLayout()
         Me.tabPayments.SuspendLayout()
@@ -134,6 +134,24 @@ Partial Class FrmPatientProfile
         Me.tabPhotos.Text = "الصور"
         Me.tabPhotos.UseVisualStyleBackColor = True
         '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Tahoma", 12.0!)
+        Me.Label12.Location = New System.Drawing.Point(624, 17)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(86, 19)
+        Me.Label12.TabIndex = 57
+        Me.Label12.Text = "اختار الخطة"
+        '
+        'cbPhotoPlan
+        '
+        Me.cbPhotoPlan.FormattingEnabled = True
+        Me.cbPhotoPlan.Location = New System.Drawing.Point(312, 19)
+        Me.cbPhotoPlan.Name = "cbPhotoPlan"
+        Me.cbPhotoPlan.Size = New System.Drawing.Size(300, 24)
+        Me.cbPhotoPlan.TabIndex = 56
+        '
         'btnAddPhoto
         '
         Me.btnAddPhoto.BackColor = System.Drawing.Color.Blue
@@ -165,7 +183,7 @@ Partial Class FrmPatientProfile
         Me.tabNotes.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabNotes.Location = New System.Drawing.Point(4, 29)
         Me.tabNotes.Name = "tabNotes"
-        Me.tabNotes.Size = New System.Drawing.Size(915, 569)
+        Me.tabNotes.Size = New System.Drawing.Size(915, 567)
         Me.tabNotes.TabIndex = 4
         Me.tabNotes.Text = "ملاحظات الطبيب"
         Me.tabNotes.UseVisualStyleBackColor = True
@@ -275,7 +293,7 @@ Partial Class FrmPatientProfile
         Me.tabSessions.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabSessions.Location = New System.Drawing.Point(4, 29)
         Me.tabSessions.Name = "tabSessions"
-        Me.tabSessions.Size = New System.Drawing.Size(915, 569)
+        Me.tabSessions.Size = New System.Drawing.Size(915, 567)
         Me.tabSessions.TabIndex = 2
         Me.tabSessions.Text = "الجلسات"
         Me.tabSessions.UseVisualStyleBackColor = True
@@ -344,7 +362,7 @@ Partial Class FrmPatientProfile
         Me.tabMedical.Location = New System.Drawing.Point(4, 29)
         Me.tabMedical.Name = "tabMedical"
         Me.tabMedical.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabMedical.Size = New System.Drawing.Size(915, 569)
+        Me.tabMedical.Size = New System.Drawing.Size(915, 567)
         Me.tabMedical.TabIndex = 1
         Me.tabMedical.Text = "التاريخ المرضى"
         Me.tabMedical.UseVisualStyleBackColor = True
@@ -373,11 +391,11 @@ Partial Class FrmPatientProfile
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Tahoma", 12.0!)
-        Me.Label3.Location = New System.Drawing.Point(814, 263)
+        Me.Label3.Location = New System.Drawing.Point(748, 263)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(84, 19)
+        Me.Label3.Size = New System.Drawing.Size(141, 19)
         Me.Label3.TabIndex = 16
-        Me.Label3.Text = "Conditions"
+        Me.Label3.Text = "Medical Conditions"
         '
         'Label2
         '
@@ -572,24 +590,6 @@ Partial Class FrmPatientProfile
         Me.btnNewPlan.TabIndex = 1
         Me.btnNewPlan.Text = "خطة علاج جديدة"
         Me.btnNewPlan.UseVisualStyleBackColor = False
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Tahoma", 12.0!)
-        Me.Label12.Location = New System.Drawing.Point(624, 17)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(86, 19)
-        Me.Label12.TabIndex = 57
-        Me.Label12.Text = "اختار الخطة"
-        '
-        'cbPhotoPlan
-        '
-        Me.cbPhotoPlan.FormattingEnabled = True
-        Me.cbPhotoPlan.Location = New System.Drawing.Point(312, 19)
-        Me.cbPhotoPlan.Name = "cbPhotoPlan"
-        Me.cbPhotoPlan.Size = New System.Drawing.Size(300, 24)
-        Me.cbPhotoPlan.TabIndex = 56
         '
         'FrmPatientProfile
         '
