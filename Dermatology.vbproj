@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DAFAEE6F-F5D5-45A0-86C8-E23548E41F7C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>ClinicPro.My.MyApplication</StartupObject>
+    <RootNamespace>ClinicPro</RootNamespace>
+    <AssemblyName>ClinicPro</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ClinicPro.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ClinicPro.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppSettings.vb" />
+    <Compile Include="ArabicHelper.vb" />
+    <Compile Include="ClinicReports.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClinicReports.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CurrentUser.vb" />
+    <Compile Include="DatabaseConfig.vb" />
+    <Compile Include="DatabaseHelper.vb" />
+    <Compile Include="DBConnection.vb" />
+    <Compile Include="FormMain.Designer.vb">
+      <DependentUpon>FormMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddAppointment.Designer.vb">
+      <DependentUpon>FrmAddAppointment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddAppointment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddDevice.Designer.vb">
+      <DependentUpon>FrmAddDevice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddDevice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddLaserType.Designer.vb">
+      <DependentUpon>FrmAddLaserType.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddLaserType.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddNewSession.Designer.vb">
+      <DependentUpon>FrmAddNewSession.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddNewSession.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddPatient.Designer.vb">
+      <DependentUpon>FrmAddPatient.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddPatient.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddPayment.Designer.vb">
+      <DependentUpon>FrmAddPayment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddPayment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddService.Designer.vb">
+      <DependentUpon>FrmAddService.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddService.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddSession.Designer.vb">
+      <DependentUpon>FrmAddSession.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddSession.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddTreatmentArea.Designer.vb">
+      <DependentUpon>FrmAddTreatmentArea.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddTreatmentArea.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddUser.Designer.vb">
+      <DependentUpon>FrmAddUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAllReports.Designer.vb">
+      <DependentUpon>FrmAllReports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAllReports.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAllSettings.Designer.vb">
+      <DependentUpon>FrmAllSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAllSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInvoicePrint.Designer.vb">
+      <DependentUpon>FrmInvoicePrint.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInvoicePrint.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.vb">
+      <DependentUpon>FrmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPatientProfile.Designer.vb">
+      <DependentUpon>FrmPatientProfile.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPatientProfile.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPatientSearch.Designer.vb">
+      <DependentUpon>FrmPatientSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPatientSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPatientSessions.Designer.vb">
+      <DependentUpon>FrmPatientSessions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPatientSessions.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRevenueByDoctor.Designer.vb">
+      <DependentUpon>FrmRevenueByDoctor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRevenueByDoctor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectServices.Designer.vb">
+      <DependentUpon>FrmSelectServices.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelectServices.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSessionDetails.Designer.vb">
+      <DependentUpon>FrmSessionDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSessionDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSessionPayments.Designer.vb">
+      <DependentUpon>FrmSessionPayments.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSessionPayments.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTreatmentPlan.Designer.vb">
+      <DependentUpon>FrmTreatmentPlan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTreatmentPlan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PasswordHelper.vb" />
+    <Compile Include="UC_About.Designer.vb">
+      <DependentUpon>UC_About.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UC_About.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Appointments.Designer.vb">
+      <DependentUpon>UC_Appointments.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Appointments.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Dashboard.Designer.vb">
+      <DependentUpon>UC_Dashboard.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Dashboard.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Devices.Designer.vb">
+      <DependentUpon>UC_Devices.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Devices.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_LaserTypes.Designer.vb">
+      <DependentUpon>UC_LaserTypes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UC_LaserTypes.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Patients.Designer.vb">
+      <DependentUpon>UC_Patients.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Patients.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Services.Designer.vb">
+      <DependentUpon>UC_Services.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Services.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Sessions.Designer.vb">
+      <DependentUpon>UC_Sessions.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Sessions.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_SessionsDue.Designer.vb">
+      <DependentUpon>UC_SessionsDue.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UC_SessionsDue.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Settings.Designer.vb">
+      <DependentUpon>UC_Settings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Settings.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_TreatmentAreas.Designer.vb">
+      <DependentUpon>UC_TreatmentAreas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UC_TreatmentAreas.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Users.Designer.vb">
+      <DependentUpon>UC_Users.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Users.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddAppointment.resx">
+      <DependentUpon>FrmAddAppointment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddDevice.resx">
+      <DependentUpon>FrmAddDevice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddLaserType.resx">
+      <DependentUpon>FrmAddLaserType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddNewSession.resx">
+      <DependentUpon>FrmAddNewSession.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddPatient.resx">
+      <DependentUpon>FrmAddPatient.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddPayment.resx">
+      <DependentUpon>FrmAddPayment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddService.resx">
+      <DependentUpon>FrmAddService.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddSession.resx">
+      <DependentUpon>FrmAddSession.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddTreatmentArea.resx">
+      <DependentUpon>FrmAddTreatmentArea.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddUser.resx">
+      <DependentUpon>FrmAddUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAllReports.resx">
+      <DependentUpon>FrmAllReports.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAllSettings.resx">
+      <DependentUpon>FrmAllSettings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInvoicePrint.resx">
+      <DependentUpon>FrmInvoicePrint.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPatientProfile.resx">
+      <DependentUpon>FrmPatientProfile.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPatientSearch.resx">
+      <DependentUpon>FrmPatientSearch.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPatientSessions.resx">
+      <DependentUpon>FrmPatientSessions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRevenueByDoctor.resx">
+      <DependentUpon>FrmRevenueByDoctor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelectServices.resx">
+      <DependentUpon>FrmSelectServices.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSessionDetails.resx">
+      <DependentUpon>FrmSessionDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSessionPayments.resx">
+      <DependentUpon>FrmSessionPayments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTreatmentPlan.resx">
+      <DependentUpon>FrmTreatmentPlan.vb</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Invoice.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="Resources\EgSoftProLogo3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\SkyLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="RevenueByDoctor.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="UC_About.resx">
+      <DependentUpon>UC_About.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Appointments.resx">
+      <DependentUpon>UC_Appointments.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Dashboard.resx">
+      <DependentUpon>UC_Dashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Devices.resx">
+      <DependentUpon>UC_Devices.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_LaserTypes.resx">
+      <DependentUpon>UC_LaserTypes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Patients.resx">
+      <DependentUpon>UC_Patients.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Services.resx">
+      <DependentUpon>UC_Services.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Sessions.resx">
+      <DependentUpon>UC_Sessions.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_SessionsDue.resx">
+      <DependentUpon>UC_SessionsDue.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Settings.resx">
+      <DependentUpon>UC_Settings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_TreatmentAreas.resx">
+      <DependentUpon>UC_TreatmentAreas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Users.resx">
+      <DependentUpon>UC_Users.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClinicReports.xsc">
+      <DependentUpon>ClinicReports.xsd</DependentUpon>
+    </None>
+    <None Include="ClinicReports.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ClinicReports.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ClinicReports.xss">
+      <DependentUpon>ClinicReports.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\Loader.cs" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>
